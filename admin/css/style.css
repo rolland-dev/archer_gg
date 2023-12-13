@@ -1,0 +1,277 @@
+/* Style général du site */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+/* menu */
+nav {
+    padding: 10px !important;
+}
+
+a.navbar-brand {
+    width: 10% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center;
+}
+
+a.nav-link.color:hover {
+    border-radius: 10px;
+    background-color: rgb(4, 4, 4) !important;
+    color: rgb(170, 170, 224) !important;
+}
+
+.nav-link {
+    color: blanchedalmond !important;
+}
+
+a.nav-link {
+    font-size: x-large !important;
+}
+
+a.nav-link:hover {
+    border-radius: 10px;
+    background-color: rgb(7, 7, 7);
+}
+
+i{
+    background-color: rgb(207, 63, 63);
+    border-radius: 50%;
+    padding: 5%;
+    border: 1px solid grey;
+    color: white;
+}
+hr {
+    border-top: 10px solid rgb(1, 96, 45) !important;
+}
+
+.cadre{
+    border: 1 solid rgb(22, 23, 22);
+}
+body{
+    background-image: url("../img/1920.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login {
+    text-align: left !important;
+    margin-right: 30px;
+}
+.affiche_msg{
+    margin: auto;
+    padding: 10px;
+    width: 70%;
+    border: 3px solid rgb(14, 202, 102);
+    border-radius: 10px;
+    background-color: rgb(62, 223, 137);
+}
+.couleur{
+    text-decoration: none;
+    color: rgb(1, 96, 45) ;
+}
+form {
+    text-align: center;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+/* connexion */
+.cnx>input {
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#output2{
+    text-decoration: none !important;
+    color: white !important;
+}
+
+#if{
+    width: 100%;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 400px) {
+
+    .slider{
+        display: none !important;
+    }
+    .img_menu {
+        width: 200% !important;
+    }
+
+    .calendar {
+        margin: auto;
+        width: 100% !important;
+    }
+
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto !important;
+        padding: 0px !important;
+        padding-right: 10px !important;
+        width: 100% !important;
+    }
+
+    .card {
+        /* margin: 5px auto !important; */
+        padding: auto !important;
+        width: 100% !important;
+    }
+
+    .calendar_int {
+        width: 100% !important;
+        margin: 5px 5px !important;
+    }
+
+    .card-body,
+    .card-header {
+        width: 100% !important;
+    }
+
+    .complet {
+        display: flex;
+        color: red;
+        justify-content: center;
+        align-items: stretch;
+    }
+    
+    .img {
+        width: 25%;
+    }
+
+    .fond {
+        border-radius: 8px;
+        background-color: rgb(0, 116, 55) !important;
+    }
+
+    .carte {
+
+        border: 1px black solid;
+        margin: auto 5px;
+    }
+
+    .espace {
+        height: 150px;
+    }
+
+    #if{
+        width: auto;
+     
+    }
+    /* .footer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 110px;
+        font-size: x-large;
+        position: fixed;
+        bottom: 0px;
+        left: auto;
+        background-color: green;
+        color: rgb(0, 116, 55);
+    } */
+
+    .fgauche {
+        display: none;
+    }
+
+    .fdroite,
+    .centre {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .fdroite>a {
+        text-decoration: none;
+        color: rgb(0, 116, 55);
+        font-size: x-large;
+    }
+}
+
+@media screen and (min-width: 401px) {
+    .calendar {
+        width: 80% !important;
+        display: flex;
+        margin: 0 auto !important;
+        justify-content: space-evenly;
+    }
+
+    .card {
+        margin: 15px;
+
+    }
+
+    .fond {
+        border-radius: 8px;
+        background-color: rgb(0, 116, 55) !important;
+    }
+
+    .calendar_int {
+        width: 70% !important;
+
+    }
+
+    .carte {
+        display: flex;
+        border: 1px black solid;
+        margin: auto 5px;
+    }
+
+    .div {
+        display: flex;
+    }
+
+    .img {
+        width: 15%;
+    }
+
+
+    .complet {
+        display: flex;
+        color: red;
+        justify-content: center;
+        /* align-items: stretch; */
+    }
+    
+
+    /* Footer */
+
+    /* .footer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        border: 1px solid #bebebe;
+        background-color: #bebebe;
+        color: blanchedalmond;
+        padding: 10px;
+    } */
+
+    .fgauche,
+    .fcentre,
+    .fdroite {
+        display: flex;
+        color: rgb(0, 116, 55) !important;
+        font-size: x-large;
+    }
+
+    .fdroite>a {
+        text-decoration: none !important;
+        color: rgb(0, 116, 55) !important;
+        font-size: x-large;
+    }
+
+    .espace {
+        height: 150px;
+    }
+}
