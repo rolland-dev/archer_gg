@@ -41,7 +41,7 @@ if (isset($_SESSION['role'])) {
                     <a class="nav-link" href="./photos.php">Photos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./staff.php">L'équipes</a>
+                    <a class="nav-link" href="./staff.php">Le Bureau</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./contact.php">Contact</a>
@@ -79,3 +79,7 @@ if (isset($_SESSION['role'])) {
         </div>
     </div>
 </nav>
+
+<div class="espace">
+        <h4>La Compagnie des Archers de Guignicourt</h4>
+    </div>

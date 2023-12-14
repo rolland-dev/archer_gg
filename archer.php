@@ -29,5 +29,8 @@ session_abort();
     <?php require_once './php/menu/menu.php'; ?>
 
     <h1 class="text-center">Mon compte : <?= $nom ?></h1>
+
+
+    <?php require_once './php/menu/footer.php'; ?>
 </body>
 </html>

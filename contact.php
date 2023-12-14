@@ -8,5 +8,8 @@
     <?php require_once './php/menu/menu.php'; ?>
 
     <h1 class="text-center">Nous contacter</h1>
+
+
+    <?php require_once './php/menu/footer.php'; ?>
 </body>
 </html>

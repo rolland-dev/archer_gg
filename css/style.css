@@ -3,8 +3,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* height: 100%; */
 }
-
+body{
+    background-color: rgb(240, 203, 147);
+}
 
 /* menu */
 nav {
@@ -37,30 +40,42 @@ a.nav-link:hover {
     background-color: rgb(7, 7, 7);
 }
 
-i{
+i {
     background-color: rgb(207, 63, 63);
     border-radius: 50%;
     padding: 5%;
     border: 1px solid grey;
     color: white;
 }
+
 hr {
     border-top: 10px solid rgb(1, 96, 45) !important;
 }
 
-.cadre{
+.cadre {
     border: 1 solid rgb(22, 23, 22);
 }
-body{
-    background-image: url("../img/1920.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+
+
+
+.horaire, .equipes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
+
+.card {
+    width: 50% !important;
+    border-radius: 20px;
+}
+
 .login {
     text-align: left !important;
     margin-right: 30px;
 }
-.affiche_msg{
+
+.affiche_msg {
     margin: auto;
     padding: 10px;
     width: 70%;
@@ -68,10 +83,12 @@ body{
     border-radius: 10px;
     background-color: rgb(62, 223, 137);
 }
-.couleur{
+
+.couleur {
     text-decoration: none;
-    color: rgb(1, 96, 45) ;
+    color: rgb(1, 96, 45);
 }
+
 form {
     text-align: center;
 }
@@ -88,21 +105,25 @@ h2 {
     text-align: center;
 }
 
-#output2{
+#output2 {
     text-decoration: none !important;
     color: white !important;
 }
 
-#if{
+#if {
     width: 100%;
     border-radius: 20px;
 }
 
 @media screen and (max-width: 400px) {
 
-    .slider{
+    body{
+        width: 100%;
+    }
+    .slider {
         display: none !important;
     }
+
     .img_menu {
         width: 200% !important;
     }
@@ -118,13 +139,21 @@ h2 {
         margin: 10px auto !important;
         padding: 0px !important;
         padding-right: 10px !important;
-        width: 100% !important;
+        width: 80% !important;
     }
-
+    .horaire, .equipes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+    iframe{
+        width: 90%;
+    }
     .card {
-        /* margin: 5px auto !important; */
+        margin: 5px auto !important;
         padding: auto !important;
-        width: 100% !important;
+        width: 90% !important;
     }
 
     .calendar_int {
@@ -143,7 +172,7 @@ h2 {
         justify-content: center;
         align-items: stretch;
     }
-    
+
     .img {
         width: 25%;
     }
@@ -163,10 +192,11 @@ h2 {
         height: 150px;
     }
 
-    #if{
+    #if {
         width: auto;
-     
+
     }
+
     /* .footer {
         display: flex;
         flex-direction: column;
@@ -242,7 +272,7 @@ h2 {
         justify-content: center;
         /* align-items: stretch; */
     }
-    
+
 
     /* Footer */
 
