@@ -26,7 +26,7 @@ if ($pass == "Rldepan*02") {
         if (mysqli_stmt_execute($stmt)) {
             mysqli_close($link);
             
-            header('location:../index.php ');
+            header('location:../../index.php ');
             exit();
         }
     }

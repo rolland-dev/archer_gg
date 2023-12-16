@@ -81,5 +81,11 @@ if (isset($_SESSION['role'])) {
 </nav>
 
 <div class="espace">
-        <h4>La Compagnie des Archers de Guignicourt</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            <h3 class="animate-charcter"> La Compagnie des Archers de Guignicourt</h3>
+            </div>
+        </div>
+    </div>
     </div>

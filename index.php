@@ -8,7 +8,7 @@
 
 <body>
     <?php require_once './php/menu/menu.php'; ?>
-    
+
     <!-- carousel -->
     <div class="slider">
         <div class="slide-track">

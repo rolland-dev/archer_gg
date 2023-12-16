@@ -33,69 +33,57 @@ if(!mysqli_query($link,$sql)){
     echo "Erreur de création";
 }
 
-// creation table urgence procédurale
-// $sql = "create table if not exists urgence(
-//     id int(6) unsigned auto_increment primary key,
-//     nom varchar(150) not null,
-//     prenom varchar(150) not null,
-//     parents varchar(20) not null,
-//     num_tel varchar(20) null,
-//     num_port int(30) null,
-//     patient_id int(10) not null,
-//     valide int(1) not null)";
+//creation table plumes procédurale
+$sql = "create table if not exists plumes(
+    id int(6) unsigned auto_increment primary key,
+    couleur varchar(50) not null,
+    point int(20) not null,
+    archers_id int(10) not null,
+    date date not null,
+    validateur varchar(50) not null,
+    valide int(1) not null)";
 
-// if(!mysqli_query($link,$sql)){
-//     echo "Erreur de création";
-// }
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
 
-// creation table traitements procédurale
-// $sql = "create table if not exists traitements(
+// creation table fleches procédurale
+$sql = "create table if not exists fleches(
+        id int(6) unsigned auto_increment primary key,
+        couleur varchar(50) not null,
+        point int(20) not null,
+        archers_id int(10) not null,
+        date date not null,
+        validateur varchar(50) not null,
+        valide int(1) not null)";
+
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
+
+// creation table images procédurale
+// $sql = "create table if not exists images(
 //     id int(6) unsigned auto_increment primary key,
-//     patient_id int(10) not null,
 //     date date not null,
-//     description text not null,
-//     valide int(1) not null)";
+//     lien text not null,
+//     commentaire text null)";
 
 // if(!mysqli_query($link,$sql)){
 //     echo "Erreur de création";
 // }
 
-// creation table traitements procédurale
+// creation table messages procédurale
 // $sql = "create table if not exists messages(
 //     id int(6) unsigned auto_increment primary key,
-//     patient_id int(10) not null,
-//     date date not null,
-//     description text not null,
-//     expediteur varchar(50) not null,
-//     destinataire text null)";
+//     archers_id int(5) not null,
+//     date date not not,
+//     commentaire text not null)";
 
 // if(!mysqli_query($link,$sql)){
 //     echo "Erreur de création";
 // }
 
-// creation table scenario procédurale
-// $sql = "create table if not exists scenario(
-//     id int(6) unsigned auto_increment primary key,
-//     numero int(5) not null,
-//     lien text not null)";
 
-// if(!mysqli_query($link,$sql)){
-//     echo "Erreur de création";
-// }
-
-// creation table traitements procédurale
-// $sql = "create table if not exists messagesad(
-//     id int(6) unsigned auto_increment primary key,
-//     patient_id int(10) not null,
-//     date date not null,
-//     description text not null,
-//     expediteur varchar(50) not null,
-//     destinataire text null,
-//     lu int(3) null)";
-
-// if(!mysqli_query($link,$sql)){
-//     echo "Erreur de création";
-// }
 
 
 $link -> close();
