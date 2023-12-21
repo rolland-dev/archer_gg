@@ -1,8 +1,8 @@
 <?php
 require_once "../../php/bdd/config.php";
 
-$nom = $prenom = $sexe = $daten = $gs = $numsecu = $nummut = $nommut = $valide= "";
-$nom_err = $prenom_err = $sexe_err = $daten_err = $gs_err = $numsecu_err = "";
+$nom = $prenom = $sexe = $daten = $email = $tel = $mobile = $pere = $mere = $licence = $certif = $valide= "";
+$nom_err = $prenom_err = $sexe_err = $daten_err = $email_err = "";
 
 
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -37,45 +37,40 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $daten = $input_daten;
     }
 
-    $input_gs = trim($_POST["gs"]);
-    if(empty($input_gs)){
-        $gs_err = "entrer le groupe sanguin";     
-    } else{
-        $gs = $input_gs;
-    }
 
-    $input_numsecu = trim($_POST["numsecu"]);
-    if(empty($input_numsecu)){
-        $numsecu_err = "entrer le numéro de sécu";     
-    } else{
-        $numsecu = $input_numsecu;
-    }
-
-    $nummut = trim($_POST['nummut']);
-    $nommut = trim($_POST['nommut']);
+    $email = trim($_POST['email']);
+    $tel = trim($_POST['tel']);
+    $mobile = trim($_POST['mobile']);
+    $pere = trim($_POST['pere']);
+    $mere = trim($_POST['mere']);
+    $licence = trim($_POST['licence']);
+    $certif = trim($_POST['certif']);
     $valide = trim($_POST['valide']);
    
 
-    if(empty($nom_err) && empty($prenom_err) && empty($sexe_err) && empty($daten_err) && empty($gs_err) && empty($numsecu_err)){
+    if(empty($nom_err) && empty($prenom_err) && empty($sexe_err) && empty($daten_err) ){
 
-        $sql = "UPDATE patient SET nom=?, prenom=?, sexe=?, date_n=?, gs=?, num_secu=?, num_mutuel=?, nom_mutuel=? ,valide=? WHERE id=?";
+        $sql = "UPDATE archers SET nom=?, prenom=?, sexe=?, date_n=?, email=?, tel=?, mobile=?, pere=? , mere=?, licence=?, certif=? ,valide=? WHERE id=?";
 
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "sssssiisii", $param_titre, $param_entete, $param_type, $param_heure, $param_objectifs, $param_img, $param_tarif_g, $param_tarif_p, $param_public, $param_details, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssssssssssiii", $param_nom, $param_prenom, $param_sexe, $param_daten, $param_email, $param_tel, $param_mobile, $param_pere, $param_mere, $param_licence, $param_certif, $param_valide, $param_id);
             
             $param_nom = $nom;
             $param_prenom = $prenom;
             $param_sexe = $sexe;
             $param_daten = $daten;
-            $param_gs = $gs;
-            $param_numsecu = $numsecu;
-            $param_nummut = $nummut;
-            $param_nommut = $nommut;
+            $param_email = $email;
+            $param_tel = $tel;
+            $param_mobile = $mobile;
+            $param_pere = $pere;
+            $param_mere = $mere;
+            $param_licence = $licence;
+            $param_certif = $certif;
             $param_valide = $valide;
             $param_id = $_GET['id'];
 
             if(mysqli_stmt_execute($stmt)){
-                header("location: ../patient_admin.php");
+                header("location: ../archers_admin.php");
                 exit();
             } else{
                 echo "Oops! erreur inattendu, rééssayez ultérieusement";
@@ -91,7 +86,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         
         $id =  trim($_GET["id"]);
         
-        $sql = "SELECT * FROM patient WHERE id = ?";
+        $sql = "SELECT * FROM archers WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "i", $param_id);
             $param_id = $id;
@@ -105,10 +100,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $prenom = $row["prenom"];
                     $sexe = $row['sexe'];
                     $daten = $row['date_n'];
-                    $gs = $row['gs'];
-                    $numsecu = $row['num_secu'];
-                    $nummut = $row['num_mutuel'];
-                    $nommut = $row['nom_mutuel'];
+                    $email = $row['email'];
+                    $tel = $row['tel'];
+                    $mobile = $row['mobile'];
+                    $pere = $row['pere'];
+                    $mere = $row['mere'];
+                    $licence = $row['licence'];
+                    $certif = $row['certif'];
                     $valide = $row['valide'];
                     $id = $row["id"];
                     
@@ -150,8 +148,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 <div class="col-md-12">
                     <h2 class="mt-5">Mise a jour de l'archer : <?= $nom ?></h2>
                     <p>Changez les valeurs et validez !!!</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" method="post"
-                        enctype="multipart/form-data">
+                    <form action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" method="post">
                         <div class="form-group">
                             <label>Nom</label>
                             <input type="text" name="nom" class="form-control" value="<?php echo $nom; ?>">
@@ -169,20 +166,32 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <input type="date" name="daten" class="form-control" value="<?php echo $daten; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Groupe sanguin</label>
-                            <input type="text" name="gs" class="form-control" value="<?php echo $gs; ?>">
+                            <label>E-mail</label>
+                            <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Numéro sécu</label>
-                            <input type="int" name="numsecu" class="form-control" value="<?php echo $numsecu; ?>">
+                            <label>Numéro téléphone</label>
+                            <input type="text" name="tel" class="form-control" value="<?php echo $tel; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Numéro mutuelle</label>
-                            <input type="int" name="nummut" class="form-control" value="<?php echo $nummut; ?>">
+                            <label>Numéro mobile</label>
+                            <input type="text" name="mobile" class="form-control" value="<?php echo $mobile; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Nom mutuelle</label>
-                            <input type="text" name="nommut" class="form-control" value="<?php echo $nommut; ?>">
+                            <label>Nom du père</label>
+                            <input type="text" name="pere" class="form-control" value="<?php echo $pere; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom de la mère</label>
+                            <input type="text" name="mere" class="form-control" value="<?php echo $mere; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Type de licence</label>
+                            <input type="text" name="licence" class="form-control" value="<?php echo $licence; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Certificat</label>
+                            <input type="bool" name="certif" class="form-control" value="<?php echo $certif; ?>">
                         </div>
                         <div class="form-group">
                             <label>Valide</label>

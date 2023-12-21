@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once('../../php/bdd//config.php');
+require_once('../../php/bdd/config.php');
 
 $id = $_GET['id'];
 

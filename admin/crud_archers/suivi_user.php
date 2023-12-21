@@ -24,6 +24,7 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
 </head>
 
 <body>
+
     <h1 class="text-center"> Suivi archer : <?php  echo $archer ?></h1>
 
     <br>
@@ -55,6 +56,7 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
                                         echo "<th>Licence</th>";
                                         echo "<th>Certificat</th>";
                                         echo "<th>Valide</th>";
+                                        echo "<th>Création user</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -74,6 +76,7 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
                                         echo "<td>" . $row['licence'] . "</td>";
                                         echo "<td>" . $row['certif'] . "</td>";
                                         echo "<td>" . $row['valide'] . "</td>";
+                                        echo "<td>" . $row['create_user'] . "</td>";
                                     echo "</tr>";
                                     
                                 }

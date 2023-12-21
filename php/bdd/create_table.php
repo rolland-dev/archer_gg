@@ -5,8 +5,9 @@ require ('./config.php');
 // creation table users procédurale
 $sql = "create table if not exists users(
     id int(6) unsigned auto_increment primary key,
-    login varchar(50) not null,
+    login varchar(50) not null unique,
     mdp varchar(150) not null,
+    email varchar(150) null,
     role varchar(15) not null)";
 
 if(!mysqli_query($link,$sql)){

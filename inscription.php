@@ -1,5 +1,14 @@
 <?php
+session_start();
+$msg_erreur="";
 
+if (isset($_SESSION['msg_erreur'])) {
+    $msg_erreur = $_SESSION['msg_erreur'];
+} else {
+    $msg_erreur = "";
+}
+
+session_abort();
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +26,12 @@
     <div class="text-center">
 
         <h1>Inscrivez vous !!</h1><br><br>
-
-        <form action="inscrit.php" method="post" class="cnx">
+        <h2><?= $msg_erreur ?></h2>
+        <form action="./inscrit.php" method="post" class="cnx">
             <label>Votre 'nom.prénom'</label><br>
             <input type="text" placeholder="nom.prénom" name="pseudo"><br><br>
+            <label>Votre email (donné à l'inscription)</label><br>
+            <input type="text" placeholder="email" name="email"><br><br>
             <label>Votre mot de passe</label><br>
             <input type="password" name="password" placeholder="Mot de passe"><br><br>
             <input type="submit" value="Inscription">

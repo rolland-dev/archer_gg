@@ -56,7 +56,7 @@ if(isset($_SESSION['login'])){
                     <?php
                     // Include config file
                     require_once "../php/bdd//config.php";
-                    
+
                     // Attempt select query execution
                     $sql = "SELECT * FROM archers";
                     if($result = mysqli_query($link, $sql)){
@@ -77,6 +77,7 @@ if(isset($_SESSION['login'])){
                                         echo "<th>Type licence</th>";
                                         echo "<th>Certificat</th>";
                                         echo "<th>Valide</th>";
+                                        echo "<th>user créé</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -97,13 +98,16 @@ if(isset($_SESSION['login'])){
                                         echo "<td>" . $row['licence'] . "</td>";
                                         echo "<td>" . $row['certif'] . "</td>";
                                         echo "<td>" . $row['valide'] . "</td>";
-                                        echo "<td class='d-flex justify-content-around '>";
-                                                echo '<a href="./crud_archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt"></span></a>';
-                                                echo '<a href="./crud_archers/delete.php?id='. $row['id'] .'" title="supprimer archer" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
-                                                echo '<a href="./crud_archers/create_user.php?nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'" title="creer utilisateur" data-toggle="tooltip"><span class="fa fa-user"></span></a>';
-                                                echo '<a href="./crud_archers/suivi_user.php?id='. $row['id'] .'&nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'" title="suivi archer" data-toggle="tooltip"><span class="fa fa-sheet-plastic"></span></a>';
-                                                echo '<a href="./plumes_admin.php?id='. $row['id'] . '&nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'" title="validation plumes" data-toggle="tooltip"><span class="fa-solid fa-feather"></span></a>';
-                                                echo '<a href="./fleches_admin.php?id='. $row['id'] . '&nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'" title="validation fleches" data-toggle="tooltip"><span class="fa fa-location-arrow"></span></a>';
+                                        echo "<td>" . $row['create_user'] . "</td>";
+                                        echo "<td class='d-flex justify-content-around w-100'>";
+                                                echo '<a href="./crud_archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
+                                                echo '<a href="./crud_archers/delete.php?id='. $row['id'] .'" title="supprimer archer" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                                if($row['create_user']==0):
+                                                    echo '<a href="./crud_archers/create_user.php?nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'&email=' . $row['email'].'&id=' . $row['id']. '" title="creer utilisateur" data-toggle="tooltip"><span class="fa fa-user p-2"></span></a>';
+                                                endif;
+                                                echo '<a href="./crud_archers/suivi_user.php?id='. $row['id'] .'&nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'" title="suivi archer" data-toggle="tooltip"><span class="fa fa-sheet-plastic p-2"></span></a>';
+                                                echo '<a href="./plumes_admin.php?id='. $row['id'] . '&nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'" title="validation plumes" data-toggle="tooltip"><span class="fa-solid fa-feather p-2"></span></a>';
+                                                echo '<a href="./fleches_admin.php?id='. $row['id'] . '&nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'" title="validation fleches" data-toggle="tooltip"><span class="fa fa-location-arrow p-2"></span></a>';
                                             echo "</td>";
                                     echo "</tr>";
                                     

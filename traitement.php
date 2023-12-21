@@ -33,11 +33,11 @@ $sql = "SELECT * FROM users";
 if ($result = mysqli_query($link, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_array($result)) {
-      
                 if (($login_ok == $row['login']) && (password_verify($password_ok,$row['mdp']))) {
                     $_SESSION['login']="yes";
                     $_SESSION['nom']=$row['login'];
                     $_SESSION['role']=$row['role'];
+                    $_SESSION['archer_id']=$row['archer_id'];
                     $valide="ok";
                     header('location: ./index.php');
                     exit();
