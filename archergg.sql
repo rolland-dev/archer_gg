@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 14 déc. 2023 à 15:26
--- Version du serveur : 8.0.31
--- Version de PHP : 8.0.26
+-- Généré le : jeu. 21 déc. 2023 à 07:28
+-- Version du serveur : 8.2.0
+-- Version de PHP : 8.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,6 +51,51 @@ CREATE TABLE IF NOT EXISTS `archers` (
 
 INSERT INTO `archers` (`id`, `nom`, `prenom`, `sexe`, `date_n`, `email`, `tel`, `mobile`, `pere`, `mere`, `licence`, `certif`, `valide`) VALUES
 (1, 'rolland', 'didier', 'M', '1972-06-27', 'didier.rld@gmail.com', '0323240255', '0626842797', '', '', 'compétition', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fleches`
+--
+
+DROP TABLE IF EXISTS `fleches`;
+CREATE TABLE IF NOT EXISTS `fleches` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `couleur` varchar(50) NOT NULL,
+  `point` int NOT NULL,
+  `archers_id` int NOT NULL,
+  `date` date NOT NULL,
+  `valide` int NOT NULL,
+  `validateur` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `plumes`
+--
+
+DROP TABLE IF EXISTS `plumes`;
+CREATE TABLE IF NOT EXISTS `plumes` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `couleur` varchar(50) NOT NULL,
+  `point` int NOT NULL,
+  `archers_id` int NOT NULL,
+  `date` date NOT NULL,
+  `valide` int NOT NULL,
+  `validateur` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `plumes`
+--
+
+INSERT INTO `plumes` (`id`, `couleur`, `point`, `archers_id`, `date`, `valide`, `validateur`) VALUES
+(1, 'jaune', 210, 1, '2023-12-16', 0, 'Jean Luc GRELET'),
+(2, 'rouge', 200, 1, '2023-12-15', 0, 'Jean Luc GRELET'),
+(3, 'noire', 221, 1, '2023-12-15', 0, 'Jean Luc GRELET');
 
 -- --------------------------------------------------------
 
