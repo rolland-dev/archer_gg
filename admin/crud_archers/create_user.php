@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     if (isset($_POST['role'])) {
         $role = $_POST['role'];
     } else {
-        $_SESSION['erreur'] .= 'champ passeword vide';
+        $_SESSION['erreur'] .= 'champ role vide';
         header('location: ./create_user.php');
         exit();
     }

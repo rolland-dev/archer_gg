@@ -46,7 +46,9 @@
     </div>
 
     <!-- infos générales -->
-
+<br>
+    <h1>Informations diverses</h1> 
+    <!-- horaires, situation et contact  -->
     <div class="horaire w-100">
         <div class="card text-white bg-primary mb-3 text-center" style="max-width: 40rem;">
             <div class="card-header"><h1>Horaires</h1></div>

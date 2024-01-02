@@ -178,9 +178,9 @@ if (isset($_POST['submit'])) {
                                         echo "<td>" . date('d-m-Y', strtotime($row['date'])) . "</td>";
                                         echo "<td>" . $row['point'] . "</td>";
                                         echo "<td>" . $row['validateur'] . "</td>";
-                                        echo "<td class='d-flex justify-content-around '>";
-                                                echo '<a href="./crud_archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt"></span></a>';
-                                                echo '<a href="./crud_archers/delete.php?id='. $row['id'] .'" title="supprimer archer" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                        echo "<td class='class='d-flex justify-content-around w-100'>";
+                                                echo '<a href="./crud_plumes/update.php?id='. $row['id'] .'" class="p-2" title="mise a jour plume" data-toggle="tooltip"><span class=" fas fa-pencil-alt"></span></a>';
+                                                echo '<a href="./crud_plumes/delete.php?id='. $row['id'] .'" class="p-2" title="supprimer plume" data-toggle="tooltip"><span class=" fa fa-trash"></span></a>';
                                             echo "</td>";
                                     echo "</tr>";
                                     

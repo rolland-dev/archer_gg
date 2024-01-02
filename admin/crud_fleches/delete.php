@@ -9,7 +9,7 @@ $id = $_GET['id'];
 if(isset($_POST["id"]) && !empty($_POST["id"])){
         
     // Prepare a delete statement
-    $sql = "DELETE FROM fleches WHERE id = ?";
+    $sql = "DELETE FROM plumes WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -63,12 +63,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5 mb-3">Suppression d'une flêche</h2>
+                    <h2 class="mt-5 mb-3">Suppression d'une plume</h2>
                     <h3><?= $_SESSION['nom']?></h3>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
-                            <p>Etes vous sûre de vouloir supprimer cette flêche ?</p>
+                            <p>Etes vous sûre de vouloir supprimer cette plume ?</p>
                             <p>
                                 <input type="submit" value="oui" class="btn btn-danger">
                                 <a href="../archers_admin.php" class="btn btn-secondary">Non</a>

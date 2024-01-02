@@ -8,6 +8,7 @@ $sql = "create table if not exists users(
     login varchar(50) not null unique,
     mdp varchar(150) not null,
     email varchar(150) null,
+    archer_id int(10) null,
     role varchar(15) not null)";
 
 if(!mysqli_query($link,$sql)){
@@ -28,7 +29,8 @@ $sql = "create table if not exists archers(
     mere varchar(100) null,
     licence varchar(50) not null,
     certif int(1) not null,
-    valide int(1) not null)";
+    valide int(1) not null,
+    create_user varchar(100) null)";
 
 if(!mysqli_query($link,$sql)){
     echo "Erreur de création";

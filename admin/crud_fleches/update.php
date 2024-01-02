@@ -40,7 +40,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
     if(empty($couleur_err) && empty($point_err) && empty($valideur_err) && empty($date_err)){
 
-        $sql = "UPDATE plumes SET couleur=?, point=?, validateur=?, date=? WHERE id=?";
+        $sql = "UPDATE fleches SET couleur=?, point=?, validateur=?, date=? WHERE id=?";
 
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "sissi", $param_couleur, $param_point, $param_valideur,$param_date, $param_id);
@@ -68,7 +68,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         
         $id =  trim($_GET["id"]);
         
-        $sql = "SELECT * FROM plumes WHERE id = ?";
+        $sql = "SELECT * FROM fleches WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "i", $param_id);
             $param_id = $id;
@@ -122,7 +122,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Mise a jour de plume archer </h2>
+                    <h2 class="mt-5">Mise a jour d'une flêche archer </h2>
                     <p>Changez les valeurs et validez !!!</p><br><br>
                     <form action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" method="post"
                         enctype="multipart/form-data">

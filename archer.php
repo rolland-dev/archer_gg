@@ -6,12 +6,12 @@ if(isset($_SESSION['role'])){
 }else{
     $role = '';
 }
-if(isset($_SESSION['nom'])){
+if(isset($_SESSION['archer_id'])){
     $archer_id = $_SESSION['archer_id'];
 }else{
     $archer_id = '';
 }
-if(isset($_SESSION['archer_id'])){
+if(isset($_SESSION['nom'])){
     $nom = $_SESSION['nom'];
 }else{
     $nom = '';
@@ -26,9 +26,12 @@ session_abort();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <?php require_once './php/menu/head.php' ?>
+<meta charset="UTF-8">
     <title>Suivi archer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
     <style>
       .wrapper{
             width: 90%;
@@ -39,10 +42,11 @@ session_abort();
         }
     </style>
 </head>
-<body>
-    <?php require_once './php/menu/menu.php'; ?>
 
-    <h1 class="text-center">Mon compte : <?= $nom ?></h1>
+<body>
+
+    <h1 class="text-center"> Mon compte Archer : <?php  echo $nom ?></h1>
+
     <br>
     <div class="wrapper">
         <div class="container-fluid">
@@ -50,7 +54,7 @@ session_abort();
                 <div class="col-md-12">
                     <?php
                     // Include config file
-                    require_once "./php/bdd/config.php";
+                    require_once "./php/bdd//config.php";
                     
                     // Attempt select query execution
                     $sql = "SELECT * FROM archers where id='$archer_id'";
@@ -59,7 +63,7 @@ session_abort();
                             echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr class=''>";
-                                        echo "<th>id</th>";
+                                        
                                         echo "<th>Nom</th>";
                                         echo "<th>Prenom</th>";
                                         echo "<th>Genre</th>";
@@ -71,13 +75,15 @@ session_abort();
                                         echo "<th>Mère</th>";
                                         echo "<th>Licence</th>";
                                         echo "<th>Certificat</th>";
+                                        echo "<th>Action</th>";
+                                        
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
 
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr class='text-center'>";
-                                        echo "<td>" . $row['id'] . "</td>";
+                                        
                                         echo "<td>" . $row['nom'] . "</td>";
                                         echo "<td>" . $row['prenom'] . "</td>";
                                         echo "<td>" . $row['sexe'] . "</td>";
@@ -89,6 +95,9 @@ session_abort();
                                         echo "<td>" . $row['mere'] . "</td>";
                                         echo "<td>" . $row['licence'] . "</td>";
                                         echo "<td>" . $row['certif'] . "</td>";
+                                        echo "<td class='d-flex justify-content-around w-100'>";
+                                        echo '<a href="./php/archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
+                                    echo "</td>";
                                     echo "</tr>";
                                     
                                 }
@@ -117,7 +126,7 @@ session_abort();
                 <div class="col-md-12">
                     <?php
                     // Include config file
-                    require_once "./php/bdd/config.php";
+                    require_once "./php/bdd//config.php";
                     
                     // Attempt select query execution
                     $sql = "SELECT * FROM plumes where archers_id='$archer_id'";
@@ -167,7 +176,7 @@ session_abort();
                 <div class="col-md-12">
                     <?php
                     // Include config file
-                    require_once "./php/bdd/config.php";
+                    require_once "./php/bdd//config.php";
                     
                     // Attempt select query execution
                     $sql = "SELECT * FROM fleches where archers_id='$archer_id'";
@@ -212,7 +221,9 @@ session_abort();
         </div>
     </div>
 
-
-    <?php require_once './php/menu/footer.php'; ?>
+    <div class="text-center">
+        <a href="./index.php" class="btn btn-secondary">Retour</a>
+    </div>
+    
 </body>
 </html>
