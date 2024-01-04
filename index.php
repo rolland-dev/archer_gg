@@ -44,8 +44,41 @@
             </div>
         </div>
     </div>
-
+<br>
     <!-- infos générales -->
+    <h1>Fils de publications</h1>
+    <?php
+        $sql = "SELECT * FROM messages ";
+        if ($result = mysqli_query($link, $sql)) {
+            if (mysqli_num_rows($result) > 0) { 
+    ?>
+     <hr>
+    <h3 class="text-center">Tout les fils d'actualités se retrouveront dans le <a href="./"
+            class="card-link">Ici</a></h3>
+    <div class="row">
+        <?php
+            while ($row = mysqli_fetch_array($result)) {
+        ?>
+
+        <div class="col-12 text-center border mt-3 d-flex fond mobile">
+            <div class="card col-12 ">
+                <div class="card-body">
+                    <h2 class="card-title"><?= $row['date'] ?></h5>
+                        <h6 class="card-subtitle text-muted"><?= date('d-m-Y', strtotime($row['date'])) ?></h6>
+                </div>               
+            </div>
+            <div class="card calendar_int">
+                <div class="card-body d-flex flex-column complet">
+                    <h5 class="card-title"><br><br>
+                        Lieu défini en fonction du nombre de candidats
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <?php }
+            }}
+        ?>
+    </div>
 <br>
     <h1>Informations diverses</h1> 
     <!-- horaires, situation et contact  -->

@@ -76,15 +76,17 @@ if(!mysqli_query($link,$sql)){
 // }
 
 // creation table messages procédurale
-// $sql = "create table if not exists messages(
-//     id int(6) unsigned auto_increment primary key,
-//     archers_id int(5) not null,
-//     date date not not,
-//     commentaire text not null)";
+$sql = "create table if not exists messages(
+    id int(6) unsigned auto_increment primary key,
+    lien text null,
+    date date not null,
+    editeur varchar(100) not null,
+    commentaire text not null,
+    valide int(1) not null)";
 
-// if(!mysqli_query($link,$sql)){
-//     echo "Erreur de création";
-// }
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
 
 
 
