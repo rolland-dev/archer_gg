@@ -48,6 +48,7 @@
     <!-- infos générales -->
     <h1>Fils de publications</h1>
     <?php
+     require_once "./php/bdd/config.php";
         $sql = "SELECT * FROM messages ";
         if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) { 
@@ -60,17 +61,17 @@
             while ($row = mysqli_fetch_array($result)) {
         ?>
 
-        <div class="col-12 text-center border mt-3 d-flex fond mobile">
-            <div class="card col-12 ">
-                <div class="card-body">
-                    <h2 class="card-title"><?= $row['date'] ?></h5>
+        <div class="col-12 text-center border mt-3 d-flex ">
+            <div class="card col-12" style="width:20% !important;">
+                <div class="card-body text-center"><br>
                         <h6 class="card-subtitle text-muted"><?= date('d-m-Y', strtotime($row['date'])) ?></h6>
+                        <h6 class="card-subtitle text-muted"><?= $row['editeur'] ?></h6>
                 </div>               
             </div>
             <div class="card calendar_int">
                 <div class="card-body d-flex flex-column complet">
                     <h5 class="card-title"><br><br>
-                        Lieu défini en fonction du nombre de candidats
+                    <?= $row['commentaire'] ?>
                     </h5>
                 </div>
             </div>
