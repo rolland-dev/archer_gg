@@ -46,6 +46,9 @@ if (isset($_SESSION['role'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="./contact.php">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link f" target="_blank" href="https://www.facebook.com/profile.php?id=100054339589718"><i class="fab fa-facebook"></i></a>
+                </li>
             </ul>
             <ul class="navbar-nav login">
                 <!-- Si connexion et en fonction du role -->

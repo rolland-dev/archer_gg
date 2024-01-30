@@ -1,7 +1,7 @@
 <?php
 require_once "../../php/bdd/config.php";
 
-$nom = $prenom = $sexe = $daten = $email = $tel = $mobile = $pere = $mere = $licence = $certif = $valide= "";
+$nom = $prenom = $sexe = $daten = $email = $tel = $mobile = $pere = $mere = $numlicence = $licence = $certif = $valide= "";
 $nom_err = $prenom_err = $sexe_err = $daten_err = $email_err = "";
 
 
@@ -43,6 +43,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     $mobile = trim($_POST['mobile']);
     $pere = trim($_POST['pere']);
     $mere = trim($_POST['mere']);
+    $numlicence = trim($_POST['numlicence']);
     $licence = trim($_POST['licence']);
     $certif = trim($_POST['certif']);
     $valide = trim($_POST['valide']);
@@ -50,10 +51,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
     if(empty($nom_err) && empty($prenom_err) && empty($sexe_err) && empty($daten_err) ){
 
-        $sql = "UPDATE archers SET nom=?, prenom=?, sexe=?, date_n=?, email=?, tel=?, mobile=?, pere=? , mere=?, licence=?, certif=? ,valide=? WHERE id=?";
+        $sql = "UPDATE archers SET nom=?, prenom=?, sexe=?, date_n=?, email=?, tel=?, mobile=?, pere=? , mere=?, numlicence=?, licence=?, certif=? ,valide=? WHERE id=?";
 
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "ssssssssssiii", $param_nom, $param_prenom, $param_sexe, $param_daten, $param_email, $param_tel, $param_mobile, $param_pere, $param_mere, $param_licence, $param_certif, $param_valide, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssssssssssiii", $param_nom, $param_prenom, $param_sexe, $param_daten, $param_email, $param_tel, $param_mobile, $param_pere, $param_mere,$param_numlicence, $param_licence, $param_certif, $param_valide, $param_id);
             
             $param_nom = $nom;
             $param_prenom = $prenom;
@@ -64,6 +65,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $param_mobile = $mobile;
             $param_pere = $pere;
             $param_mere = $mere;
+            $param_numlicence = $numlicence;
             $param_licence = $licence;
             $param_certif = $certif;
             $param_valide = $valide;
@@ -105,6 +107,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $mobile = $row['mobile'];
                     $pere = $row['pere'];
                     $mere = $row['mere'];
+                    $numlicence = $row['numlicence'];
                     $licence = $row['licence'];
                     $certif = $row['certif'];
                     $valide = $row['valide'];
@@ -184,6 +187,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <div class="form-group">
                             <label>Nom de la mère</label>
                             <input type="text" name="mere" class="form-control" value="<?php echo $mere; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Numéro de licence</label>
+                            <input type="text" name="numlicence" class="form-control" value="<?php echo $numlicence; ?>">
                         </div>
                         <div class="form-group">
                             <label>Type de licence</label>

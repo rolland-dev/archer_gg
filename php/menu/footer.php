@@ -10,4 +10,4 @@
           
         </div>
     </div>
-    <div class="text-center text-primary"><p>Mise à jour le 21/12/2023 - RLDéveloppement</p></div>
+    <div class="text-center text-primary"><p>Mise à jour le 30/01/2024 - RLDéveloppement</p></div>

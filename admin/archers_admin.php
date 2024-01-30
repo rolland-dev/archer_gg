@@ -74,6 +74,7 @@ if(isset($_SESSION['login'])){
                                         echo "<th>Numéro mobile</th>";
                                         echo "<th>Le père</th>";
                                         echo "<th>La mère</th>";
+                                        echo "<th>Numéro licence</th>";
                                         echo "<th>Type licence</th>";
                                         echo "<th>Certificat</th>";
                                         echo "<th>Valide</th>";
@@ -95,6 +96,7 @@ if(isset($_SESSION['login'])){
                                         echo "<td>" . $row['mobile'] . "</td>";
                                         echo "<td>" . $row['pere'] . "</td>";
                                         echo "<td>" . $row['mere'] . "</td>";
+                                        echo "<td>" . $row['numlicence'] . "</td>";
                                         echo "<td>" . $row['licence'] . "</td>";
                                         echo "<td>" . $row['certif'] . "</td>";
                                         echo "<td>" . $row['valide'] . "</td>";

@@ -1,7 +1,7 @@
 <?php
 require_once "../../php/bdd/config.php";
 
-$nom = $prenom = $sexe = $daten = $email = $tel = $mobile = $pere = $mere = $license = $certif = "";
+$nom = $prenom = $sexe = $daten = $email = $tel = $mobile = $pere = $mere = $numlicence = $license = $certif = "";
 $nom_err = $prenom_err = $sexe_err = $daten_err = $email_err = $license = $certif = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -45,6 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $mobile = trim($_POST['mobile']);
     $pere = trim($_POST['pere']);
     $mere = trim($_POST['mere']);
+    $numlicense = trim($_POST['numlicence']);
     $license = trim($_POST['licence']);
     $certif = trim($_POST['certif']);
     $valide = trim($_POST['valide']);
@@ -60,11 +61,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_mobile = $mobile;
             $param_pere = $pere;
             $param_mere = $mere;
+            $param_numlicence = $numlicence;
             $param_licence = $license;
             $param_certif = $certif;
             $param_valide = $valide;
             
-            $sql = "INSERT INTO archers (nom, prenom, sexe, date_n , email,tel,mobile,pere,mere,licence,certif, valide) VALUES ( '$param_nom', '$param_prenom', '$param_sexe', '$param_daten', '$param_email', '$param_tel', '$param_mobile','$param_pere', '$param_mere', '$param_licence', '$param_certif', '$param_valide')";
+            $sql = "INSERT INTO archers (nom, prenom, sexe, date_n , email,tel,mobile,pere,mere,numlicence,licence,certif, valide) VALUES ( '$param_nom', '$param_prenom', '$param_sexe', '$param_daten', '$param_email', '$param_tel', '$param_mobile','$param_pere', '$param_mere', '$param_numlicence', '$param_licence', '$param_certif', '$param_valide')";
           
             $result = mysqli_query($link, $sql);
             if($result){
@@ -134,6 +136,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="form-group">
                             <label>Nom et prénom mère</label>
                             <input type="text" name="mere" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Numéro licence</label>
+                            <input type="text" name="numlicence" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Type licence</label>

@@ -46,6 +46,7 @@
     </div>
 <br>
     <!-- infos générales -->
+    <hr>
     <h1>Fils de publications</h1>
     <?php
      require_once "./php/bdd/config.php";
@@ -53,34 +54,33 @@
         if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) { 
     ?>
-     <hr>
+     
     <h3 class="text-center">Tout les fils d'actualités se retrouveront dans le <a href="./"
-            class="card-link">Ici</a></h3>
+            class="card-link">Ici</a></h3><br><br>
     <div class="row">
         <?php
             while ($row = mysqli_fetch_array($result)) {
         ?>
-
-        <div class="col-12 text-center border mt-3 d-flex ">
-            <div class="card col-12" style="width:20% !important;">
-                <div class="card-body text-center"><br>
-                        <h6 class="card-subtitle text-muted"><?= date('d-m-Y', strtotime($row['date'])) ?></h6>
-                        <h6 class="card-subtitle text-muted"><?= $row['editeur'] ?></h6>
-                </div>               
-            </div>
-            <div class="card calendar_int">
-                <div class="card-body d-flex flex-column complet">
-                    <h5 class="card-title"><br><br>
-                    <?= $row['commentaire'] ?>
-                    </h5>
-                </div>
-            </div>
+        <div class="d-flex justify-content-center">
+           <div class="border border-3 border-primary rounded-pill w-50 p-4 ">
+                <figure class="text-center">
+                <blockquote class="blockquote">
+                    <p class="mb-0"><?= $row['commentaire'] ?></p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                <cite title="Source Title">Le <?= date('d-m-Y', strtotime($row['date'])) ?> de <?= strtoupper($row['editeur']) ?></cite>
+                </figcaption>
+                </figure>
+            </div>  
         </div>
+       
+
         <?php }
             }}
         ?>
     </div>
 <br>
+<hr>
     <h1>Informations diverses</h1> 
     <!-- horaires, situation et contact  -->
     <div class="horaire w-100">
@@ -95,6 +95,7 @@
                 <p class="card-text">De 10h à 12h</p><br><br>
                 <h5 class="card-text border p-3 rounded">Le mercredi et le samedi, un encadrrement est présent.
                 Concernant le dimanche, aucun encadrement n'est présent donc les archers qui seront présents seront sous leurs propre responsabilité.</h5>
+                <br><h6 ><a href="https://www.ffta.fr/" style="text-decoration:none; color:white; " target="_blank" rel="noopener noreferrer">Le site : Fédération française de Tir à l'Arc</a></h6>
             </div>
         </div>
         <div class="card text-white bg-primary mb-3 text-center" style="max-width: 40rem;">

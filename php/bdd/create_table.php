@@ -27,6 +27,7 @@ $sql = "create table if not exists archers(
     mobile varchar(10) null,
     pere varchar(100) null,
     mere varchar(100) null,
+    numlicence varchar(40) not null,
     licence varchar(50) not null,
     certif int(1) not null,
     valide int(1) not null,

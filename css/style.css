@@ -21,9 +21,14 @@ a.navbar-brand {
     text-align: center;
 }
 
-a.nav-link.color:hover {
+a.nav-link:hover {
     border-radius: 10px;
     background-color: rgb(4, 4, 4) !important;
+    color: rgb(170, 170, 224) !important;
+}
+a.f:hover {
+    border-radius: 10px;
+    background-color: #0d6EFD !important;
     color: rgb(170, 170, 224) !important;
 }
 
@@ -35,10 +40,10 @@ a.nav-link {
     font-size: x-large !important;
 }
 
-a.nav-link:hover {
+/* a.nav-link:hover {
     border-radius: 10px;
     background-color: rgb(7, 7, 7);
-}
+} */
 
 i {
     background-color: rgb(207, 63, 63);

@@ -198,7 +198,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                        
                         <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         <input type="submit" class="btn btn-primary" value="Enregistrer">
-                        <a href="../archers.php" class="btn btn-secondary ml-2">Annuler</a>
+                        <a href="../../archer.php" class="btn btn-secondary ml-2">Annuler</a>
                     </form>
                 </div>
             </div>
