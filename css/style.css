@@ -149,10 +149,18 @@ h2 {
 }
 
 #if {
-    width: 100%;
+    width: 60%;
     border-radius: 20px;
 }
 
+input, textarea{
+    width: 80% !important;
+}
+
+.btn{
+    width: 50% !important;
+    margin: 10px;
+}
 @media screen and (max-width: 400px) {
 
     body{
