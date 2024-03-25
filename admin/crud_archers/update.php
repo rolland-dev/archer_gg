@@ -161,7 +161,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <input type="text" name="prenom" class="form-control" value="<?php echo $prenom; ?>">
                         </div>
                           <div class="form-group">
-                            <label>Genre</label>
+                            <label>Genre (M / F / NSP)</label>
                             <input type="text" name="sexe" class="form-control" value="<?php echo $sexe; ?>">
                         </div>
                         <div class="form-group">
@@ -197,11 +197,11 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <input type="text" name="licence" class="form-control" value="<?php echo $licence; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Certificat</label>
+                            <label>Certificat médical (valide=1 sinon 0)</label>
                             <input type="bool" name="certif" class="form-control" value="<?php echo $certif; ?>">
                         </div>
                         <div class="form-group">
-                            <label>Valide</label>
+                            <label>Compte Valide (valide=1 sinon 0)</label>
                             <input type="bool" name="valide" class="form-control" value="<?php echo $valide; ?>">
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>" />

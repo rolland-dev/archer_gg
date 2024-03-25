@@ -66,15 +66,15 @@ if(!mysqli_query($link,$sql)){
 }
 
 // creation table images procédurale
-// $sql = "create table if not exists images(
-//     id int(6) unsigned auto_increment primary key,
-//     date date not null,
-//     lien text not null,
-//     commentaire text null)";
+$sql = "create table if not exists images(
+    id int(6) unsigned auto_increment primary key,
+    date date not null,
+    lien text not null,
+    commentaire text null)";
 
-// if(!mysqli_query($link,$sql)){
-//     echo "Erreur de création";
-// }
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
 
 // creation table messages procédurale
 $sql = "create table if not exists messages(

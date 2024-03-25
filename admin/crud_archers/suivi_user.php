@@ -26,7 +26,9 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
 <body>
 
     <h1 class="text-center"> Suivi archer : <?php  echo $archer ?></h1>
-
+    <div class="text-center">
+        <a href="../archers_admin.php" class="btn btn-primary">Retour</a>
+    </div>
     <br>
     <div class="wrapper">
         <div class="container-fluid">
@@ -46,7 +48,7 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
                                         echo "<th>id</th>";
                                         echo "<th>Nom</th>";
                                         echo "<th>Prenom</th>";
-                                        echo "<th>Genre</th>";
+                                        echo "<th>Genre (M / F / NSP)</th>";
                                         echo "<th>Date naissance</th>";
                                         echo "<th>E-mail</th>";
                                         echo "<th>Téléphone</th>";
@@ -54,8 +56,8 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
                                         echo "<th>Père</th>";
                                         echo "<th>Mère</th>";
                                         echo "<th>Licence</th>";
-                                        echo "<th>Certificat</th>";
-                                        echo "<th>Valide</th>";
+                                        echo "<th>Certificat médical (valide=1 sinon 0)</th>";
+                                        echo "<th>Compte Valide (valide=1 sinon 0)</th>";
                                         echo "<th>Création user</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -116,6 +118,7 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
                                     echo "<tr class='text-center'>";
                                         echo "<th>plumes</th>";
                                         echo "<th>Date obtention</th>";
+                                        echo "<th>N° tir</th>";
                                         echo "<th>points</th>";
                                         echo "<th>Le validateur</th>";
                                     echo "</tr>";
@@ -126,6 +129,7 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
                                     echo "<tr class='text-center'>";
                                         echo "<td>" . $row['couleur'] . "</td>";
                                         echo "<td>" . date('d-m-Y', strtotime($row['date'])) . "</td>";
+                                        echo "<td>" . $row['valide'] . "</td>";
                                         echo "<td>" . $row['point'] . "</td>";
                                         echo "<td>" . $row['validateur'] . "</td>";
                                     echo "</tr>";
@@ -198,10 +202,6 @@ $archer = strtoupper($_GET['nom']).' ' .ucwords($_GET['prenom']);
                 </div>
             </div>        
         </div>
-    </div>
-
-    <div class="text-center">
-        <a href="../archers_admin.php" class="btn btn-secondary">Retour</a>
     </div>
     
 </body>

@@ -96,7 +96,7 @@ session_abort();
                                         echo "<td>" . $row['mere'] . "</td>";
                                         echo "<td>" . $row['numlicence'] . "</td>";
                                         echo "<td>" . $row['licence'] . "</td>";
-                                        echo "<td>" . $row['certif'] . "</td>";
+                                        echo $row['certif']==1 ? "<td>Valide</td>" : "<td>Non Valide</td>" ;
                                         echo "<td class='d-flex justify-content-around w-100'>";
                                         echo '<a href="./php/archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
                                     echo "</td>";

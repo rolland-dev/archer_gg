@@ -45,6 +45,14 @@ if (isset($_SESSION['role'])) {
                     <a class="nav-link" href="./messages_admin.php">Messages
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./suivi_admin.php">Suivi archers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./images_admin.php">En images
+                    </a>
+                </li>
             </ul>
             <ul class="navbar-nav login">
                 <!-- Si connexion et en fonction du role -->

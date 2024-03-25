@@ -91,6 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         .wrapper{
             width: 600px;
             margin: 0 auto;
+            text-align: center;
         }
     </style>
 </head>
@@ -110,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="text" name="prenom" class="form-control">
                         </div>
                           <div class="form-group">
-                            <label>Genre</label>
+                            <label>Genre (M / F / NSP)</label>
                             <input type="text" name="sexe" class="form-control">
                         </div>
                         <div class="form-group">
@@ -146,11 +147,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="text" name="licence" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Certification médical</label>
+                            <label>Certification médical (valide=1 sinon 0)</label>
                             <input type="number" name="certif" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Archer inscrit</label>
+                            <label>Archer inscrit (valide=1 sinon 0)</label>
                             <input type="number" name="valide" class="form-control">
                         </div>
                         <input type="submit" name="submit" class="btn btn-primary" value="Enregistrer">
