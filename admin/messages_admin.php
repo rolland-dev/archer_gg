@@ -107,6 +107,9 @@ session_abort();
         </div>
     </div>
 
+    <footer>
+        <?php require_once '../php/menu/footer.php' ?>
+    </footer>
 </body>
 
 </html>

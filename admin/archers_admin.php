@@ -133,6 +133,11 @@ if(isset($_SESSION['login'])){
         </div>
     </div>
     
+    <footer>
+        <?php require_once '../php/menu/footer.php' ?>
+    </footer>
+
+</head>
 </body>
 
 </html>

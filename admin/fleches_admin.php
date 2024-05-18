@@ -113,31 +113,33 @@ if (isset($_POST['submit'])) {
                 <div class="col-md-12">
                     <h2 class="mt-5">Obtention d'une flèche</h2><br>
                     <form method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                            <label>Couleur flèche</label>
-                            <select name="couleur" id="couleur">
-                                <option value="blanche">Blanche</option>
-                                <option value="noire">Noire</option>
-                                <option value="bleue">Bleue</option>
-                                <option value="rouge">Rouge</option>
-                                <option value="jaune">Jaune</option>
-                            </select>
-                        </div>
+                    <div class="d-flex justify-content-center">
                         <div class="form-group">
-                            <label>Nombre points</label>
-                            <input type="number" name="point" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Date passage </label>
-                            <input type="date" name="date" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Le validateur</label>
-                            <input type="text" name="validateur" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Valide</label>
-                            <input type="number" name="valide" class="form-control">
+                                <label>Couleur flèche</label><br>
+                                <select name="couleur" id="couleur">
+                                    <option value="blanche">Blanche</option>
+                                    <option value="noire">Noire</option>
+                                    <option value="bleue">Bleue</option>
+                                    <option value="rouge">Rouge</option>
+                                    <option value="jaune">Jaune</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre points</label>
+                                <input type="number" name="point" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Date passage </label>
+                                <input type="date" name="date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Le validateur</label>
+                                <input type="text" name="validateur" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Valide</label>
+                                <input type="number" name="valide" class="form-control">
+                            </div>
                         </div><br>
                         <input type="submit" name="submit" class="btn btn-primary" value="Enregistrer">
                         <a href="./archers_admin.php" class="btn btn-secondary ml-2">Annuler</a>
@@ -202,6 +204,10 @@ if (isset($_POST['submit'])) {
             </div>        
         </div>
     </div>
+
+    <footer>
+        <?php require_once '../php/menu/footer.php' ?>
+    </footer>
     </body>
 
 </html>

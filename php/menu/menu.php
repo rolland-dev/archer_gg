@@ -41,6 +41,9 @@ if (isset($_SESSION['role'])) {
                     <a class="nav-link" href="./photos.php">Photos</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="./concours.php">Concours Interne</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="./staff.php">Le Bureau</a>
                 </li>
                 <li class="nav-item">

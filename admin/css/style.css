@@ -37,6 +37,22 @@ a.nav-link:hover {
     background-color: rgb(7, 7, 7);
 }
 
+/* dropdown */
+.dropdown-menu.show{
+    background-color: #0d6EFD !important ;
+    border: 1px solid #0d6EFD !important ;
+    border-radius: 10px;
+    
+}
+.dropdown-item{
+    color: blanchedalmond !important;
+}
+.dropdown-item:hover{
+    background-color: rgb(7,7,7) !important ;
+    border: 1px solid rgb(7,7,7) !important ;
+    border-radius: 10px;
+    color: blanchedalmond;
+}
 i{
     background-color: rgb(207, 63, 63);
     border-radius: 50%;
@@ -88,6 +104,10 @@ h2 {
     text-align: center;
 }
 
+input.form-control{
+    width: auto !important;
+    background-color: blueviolet !important;
+}
 #output2{
     text-decoration: none !important;
     color: white !important;

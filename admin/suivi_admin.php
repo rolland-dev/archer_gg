@@ -163,7 +163,9 @@ if($result = mysqli_query($link, $sql)) {
     </div>
     <br>
 
-              
+    <footer>
+        <?php require_once '../php/menu/footer.php' ?>
+    </footer>           
     
 </body>
 

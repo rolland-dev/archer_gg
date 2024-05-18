@@ -101,25 +101,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="mt-5">Création d'un archer</h2><br>
+                    <h4 class="mt-5">(*) champs obligatoires</h4>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label>Nom</label>
+                            <label>Nom *</label>
                             <input type="text" name="nom" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Prénom</label>
+                            <label>Prénom *</label>
                             <input type="text" name="prenom" class="form-control">
                         </div>
                           <div class="form-group">
-                            <label>Genre (M / F / NSP)</label>
+                            <label>Genre (M / F / NSP) *</label>
                             <input type="text" name="sexe" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Date de naissance</label>
+                            <label>Date de naissance *</label>
                             <input type="date" name="daten" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>E-mail</label>
+                            <label>E-mail *</label>
                             <input type="text" name="email" class="form-control">
                         </div>
                         <div class="form-group">
@@ -131,27 +132,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="text" name="mobile" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Nom et prénom père</label>
+                            <label>Nom et prénom père (* si mineur)</label>
                             <input type="text" name="pere" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Nom et prénom mère</label>
+                            <label>Nom et prénom mère (* si mineur)</label>
                             <input type="text" name="mere" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Numéro licence</label>
+                            <label>Numéro licence *</label>
                             <input type="text" name="numlicence" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Type licence</label>
+                            <label>Type licence *</label>
                             <input type="text" name="licence" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Certification médical (valide=1 sinon 0)</label>
+                            <label>Certification médical (valide=1 sinon 0) *</label>
                             <input type="number" name="certif" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Archer inscrit (valide=1 sinon 0)</label>
+                            <label>Archer inscrit (valide=1 sinon 0) *</label>
                             <input type="number" name="valide" class="form-control">
                         </div>
                         <input type="submit" name="submit" class="btn btn-primary" value="Enregistrer">

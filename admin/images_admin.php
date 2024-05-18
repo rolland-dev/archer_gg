@@ -119,6 +119,9 @@ require_once "../php/bdd/config.php";
         </div>
     </div>
     
+    <footer>
+        <?php require_once '../php/menu/footer.php' ?>
+    </footer>
 </body>
 
 </html>

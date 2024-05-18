@@ -24,7 +24,7 @@ session_abort();
 
 <head>
     <?php require_once '../php/menu/head.php' ?>
-    <title>Archers</title>
+    <title>Plumes & Flèches</title>
 
     <style>
         .wrapper {
@@ -52,32 +52,43 @@ session_abort();
                     require_once "../php/bdd/config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM users";
+                    $sql = "SELECT * FROM progression";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>Id</th>";
-                                        echo "<th>Login</th>";
-                                        echo "<th>E-mail</th>";
-                                        echo "<th>Archer</th>";
-                                        echo "<th>Rôles</th>";
+                                        echo "<th>Type</th>";
+                                        echo "<th>Distance (m)</th>";
+                                        echo "<th>Blason (cm)</th>";
+                                        echo "<th>Nb volèes</th>";
+                                        echo "<th>Nb flèches</th>";
+                                        echo "<th>Nb passages</th>";
+                                        echo "<th>Points</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
 
+                                $compteur=0;
                                 while($row = mysqli_fetch_array($result)){
+                                    $compteur++;
+                                    if($compteur==6){
+                                        echo "<tr>";
+                                        echo "<td></td>";
+                                        echo "</tr>";
+                                    }
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
-                                        echo "<td>" . $row['login'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['archer_id'] . "</td>";
-                                        echo "<td>" . $row['role'] . "</td>";
+                                        echo "<td>" . $row['type'] . "</td>";
+                                        echo "<td>" . $row['distance'] . " m</td>";
+                                        echo "<td>" . $row['blason'] . " cm</td>";
+                                        echo "<td>" . $row['nbvolees'] . " volées</td>";
+                                        echo "<td>" . $row['nbfleches'] . " flèches</td>";
+                                        echo "<td>" . $row['nbpassage'] . "</td>";
+                                        echo "<td>" . $row['points'] . " points</td>";
                                         echo "<td>";
-                                                echo '<a href="./crud_users/update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                                echo '<a href="./crud_users/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                                echo '<a href="./crud_descriptions/update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
+                                                echo '<a href="./crud_descriptions/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
                                             echo "</td>";
                                     echo "</tr>";
                                     

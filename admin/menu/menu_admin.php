@@ -37,20 +37,30 @@ if (isset($_SESSION['role'])) {
                     <a class="nav-link" href="./index_admin.php">Accueil
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./archers_admin.php">Archers
-                    </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Archers</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./archers_admin.php">Liste Archers</a>
+                        <a class="dropdown-item" href="./suivi_admin.php">Suivi archers</a>
+                        <a class="dropdown-item" href="./passage_admin.php">Passage flèche/plumes</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./messages_admin.php">Messages
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./suivi_admin.php">Suivi archers
+                    <a class="nav-link" href="./images_admin.php">En images
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./images_admin.php">En images
+                    <a class="nav-link" href="./concours_admin.php">Résultats
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./description_admin.php">flèche/plumes
                     </a>
                 </li>
             </ul>
