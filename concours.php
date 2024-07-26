@@ -42,37 +42,56 @@
             
                     // Attempt select query execution
                     foreach($date as $dateunique){
-                    $sql = "SELECT * FROM inscriptions where date='$dateunique' ORDER BY points DESC, groupe ASC ";
+                    $sql = "SELECT * FROM inscriptions where date='$dateunique' ORDER BY  groupe ASC, points DESC ";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             
-                                echo date('d-m-Y', strtotime($dateunique));
+                                echo "<h2 class='text-center'>". date('d-m-Y', strtotime($dateunique)) ."</h2>";
                                 echo '<table class="table table-bordered table-striped">';
                                     echo "<thead>";
                                         echo "<tr>";
                                             echo "<th>Nom</th>";
                                             echo "<th>Prénom</th>";
-                                            echo "<th>Catégorie</th>";
-                                            echo "<th>Date</th>";
-                                            echo "<th>Groupe</th>";
+                                            echo "<th class='mobile1'>Catégorie</th>";
+                                            echo "<th class='mobile1'>Date</th>";
+                                            echo "<th class='mobile1'>Groupe</th>";
                                             echo "<th>Points</th>";
-                                            echo "<th>Classement</th>";
+                                            echo "<th>Place</th>";
                                         echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
 
                                     $compteur=0;
+                                    $groupe=1;
+
                                     while($row = mysqli_fetch_array($result)){
-                                        echo "<tr>";
-                                            echo "<td>" . strtoupper($row['nom']) . "</td>";
-                                            echo "<td>" . ucfirst($row['prenom']) . "</td>";
-                                            echo "<td>" . $row['categorie'] . "</td>";
-                                            echo "<td>" . date('d-m-Y', strtotime($row['date'])) . "</td>";
-                                            echo "<td>" . $row['groupe'] . "</td>";
-                                            echo "<td>" . $row['points'] . " points</td>";
-                                            echo "<td>" . $row['classement'] . "</td>";
-                                        echo "</tr>";
-                                        
+                                        $groupe1=$row['groupe'];
+                                        if($groupe!=$groupe1){
+                                            echo "<tr>";
+                                            echo "<td colspan='8' class='text-center'>Groupe ". $row['groupe'] ."</td>";
+                                            echo "</tr>";
+                                            echo "<tr>";
+                                            echo "<tr>";
+                                                echo "<td>" . strtoupper($row['nom']) . "</td>";
+                                                echo "<td>" . ucfirst($row['prenom']) . "</td>";
+                                                echo "<td class='mobile1'>" . $row['categorie'] . "</td>";
+                                                echo "<td class='mobile1'>" . date('d-m-Y', strtotime($row['date'])) . "</td>";
+                                                echo "<td class='mobile1'>" . $row['groupe'] . "</td>";
+                                                echo "<td>" . $row['points'] . "<span class='mobile'> points </span></td>";
+                                                echo "<td>" . $row['classement'] . "</td>";
+                                            echo "</tr>";
+                                            $groupe+=1;
+                                        }else{
+                                            echo "<tr>";
+                                                echo "<td>" . strtoupper($row['nom']) . "</td>";
+                                                echo "<td>" . ucfirst($row['prenom']) . "</td>";
+                                                echo "<td class='mobile1'>" . $row['categorie'] . "</td>";
+                                                echo "<td class='mobile1'>" . $row['date'] . "</td>";
+                                                echo "<td class='mobile1'>" . $row['groupe'] . "</td>";
+                                                echo "<td>" . $row['points'] . " points</td>";
+                                                echo "<td>" . $row['classement'] . "</td>";
+                                            echo "</tr>";
+                                        }
                                     }
                                     echo "</tbody>";                            
                                 echo "</table>";

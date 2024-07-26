@@ -26,12 +26,8 @@
             <h5 class="card-text text-center">03 23 25 82 59</h5>
         </div>
        
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
         <div class="card-footer text-muted">
-            2 days ago
+            <h5 class="card-text text-center">mail</h5>
         </div>
     </div>
 
@@ -48,13 +44,9 @@
         <div class="card-body">
             <h5 class="card-text text-center">06 26 46 82 22</h5>
         </div>
-       
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
+
         <div class="card-footer text-muted">
-            2 days ago
+            <h5 class="card-text text-center">mail</h5>
         </div>
     </div>
 
@@ -69,15 +61,11 @@
         </div>
         
         <div class="card-body">
-            <h5 class="card-text text-center">06 25 60 23 82</h5>
+            <h5 class="card-text text-center">06 13 86 21 17</h5>
         </div>
-       
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
+
         <div class="card-footer text-muted">
-            2 days ago
+            <h5 class="card-text text-center">jeanluc040457@gmail.com</h5>
         </div>
     </div>
 
@@ -94,13 +82,9 @@
         <div class="card-body">
             <h5 class="card-text text-center">06 26 84 27 97</h5>
         </div>
-       
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
+
         <div class="card-footer text-muted">
-            2 days ago
+            <h5 class="card-text text-center">didier.rld@gmail.com</h5>
         </div>
     </div>
 </div>

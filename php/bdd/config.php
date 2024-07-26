@@ -2,10 +2,10 @@
 /* config de la BDD */
 
 /* config sur serveur */
-// define('DB_SERVER', '91.216.107.164');
-// define('DB_USERNAME', 'dsfor2163255');
-// define('DB_PASSWORD', 'jcabostos0');
-// define('DB_NAME','dsfor2163255');
+// define('DB_SERVER', '185.98.131.176');
+// define('DB_USERNAME', 'arche2389791');
+// define('DB_PASSWORD', '2bikjbr1dp');
+// define('DB_NAME','arche2389791');
 
 /* config en local */
 define('DB_SERVER', 'localhost');

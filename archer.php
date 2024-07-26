@@ -29,10 +29,9 @@ session_abort();
 
 <head>
 <meta charset="UTF-8">
+    <?php require_once './php/menu/head.php' ?>
     <title>Suivi archer</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
-    <style>
+     <style>
       .wrapper{
             width: 90%;
             margin: 0 auto;
@@ -44,7 +43,7 @@ session_abort();
 </head>
 
 <body>
-
+<?php require_once './php/menu/menu.php'; ?>
     <h1 class="text-center"> Mon compte Archer : <?php  echo $nom ?></h1>
 
     <br>
@@ -57,58 +56,79 @@ session_abort();
                     require_once "./php/bdd//config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM archers where id='$archer_id'";
+                    $sql = "SELECT * FROM archers where id='$archer_id' && valide=true";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
-                            echo '<table class="table table-bordered table-striped">';
-                                echo "<thead>";
-                                    echo "<tr class=''>";
-                                        
-                                        echo "<th>Nom</th>";
-                                        echo "<th>Prenom</th>";
-                                        echo "<th>Genre</th>";
-                                        echo "<th>Date naissance</th>";
-                                        echo "<th>E-mail</th>";
-                                        echo "<th>Téléphone</th>";
-                                        echo "<th>Mobile</th>";
-                                        echo "<th>Père</th>";
-                                        echo "<th>Mère</th>";
-                                        echo "<th>Numéro Licence</th>";
-                                        echo "<th>Licence</th>";
-                                        echo "<th>Certificat</th>";
-                                        echo "<th>Action</th>";
-                                        
-                                    echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
+                            echo '<table class="table table-bordered table-striped text-center">';
 
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr class='text-center'>";
-                                        
-                                        echo "<td>" . $row['nom'] . "</td>";
-                                        echo "<td>" . $row['prenom'] . "</td>";
-                                        echo "<td>" . $row['sexe'] . "</td>";
-                                        echo "<td>" . date('d-m-Y', strtotime($row['date_n'])) . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['tel'] . "</td>";
-                                        echo "<td>" . $row['mobile'] . "</td>";
-                                        echo "<td>" . $row['pere'] . "</td>";
-                                        echo "<td>" . $row['mere'] . "</td>";
-                                        echo "<td>" . $row['numlicence'] . "</td>";
-                                        echo "<td>" . $row['licence'] . "</td>";
-                                        echo $row['certif']==1 ? "<td>Valide</td>" : "<td>Non Valide</td>" ;
-                                        echo "<td class='d-flex justify-content-around w-100'>";
-                                        echo '<a href="./php/archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                    echo "</td>";
-                                    echo "</tr>";
                                     
+                                        echo "<tr >"; 
+                                            echo "<th style='width: 50%;overflox:auto;'>Nom</th>";   
+                                            echo "<td>" . $row['nom'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Prenom</th>";
+                                            echo "<td>" . $row['prenom'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Genre</th>";
+                                            echo "<td>" . $row['sexe'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Date naissance</th>";
+                                            echo "<td>" . date('d-m-Y', strtotime($row['date_n'])) . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>E-mail</th>";
+                                            echo "<td>" . $row['email'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Téléphone</th>";
+                                            echo "<td>" . $row['tel'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Mobile</th>";
+                                            echo "<td>" . $row['mobile'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Père</th>";
+                                            echo "<td>" . $row['pere'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Mère</th>";
+                                            echo "<td>" . $row['mere'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Numéro Licence</th>";
+                                            echo "<td>" . $row['numlicence'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Licence</th>";
+                                            echo "<td>" . $row['licence'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Droit à l'image</th>";
+                                            echo "<td>" . $row['droitimg'] . "</td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Certificat</th>";
+                                            echo $row['certif']==1 ? "<td>Valide</td>" : "<td>Non Valide</td>" ;
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                            echo "<th>Action</th>";
+                                            echo "<td class='d-flex justify-content-around w-100'>";
+                                            echo '<a href="./php/archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
+                                            echo "</td>";
+                                        echo "</tr>";
+                                                                          
                                 }
-                                echo "</tbody>";                            
+                                // echo "</tbody>";                            
                             echo "</table>";
                             // Free result set
                             mysqli_free_result($result);
                         } else{
-                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+                            echo '<div class="alert alert-danger"><em>Aucune informations trouvées ou compte invalide.</em></div>';
                         }
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
@@ -159,7 +179,7 @@ session_abort();
                             // Free result set
                             mysqli_free_result($result);
                         } else{
-                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+                            echo '<div class="alert alert-danger"><em>Aucune informations trouvées ou compte invalide.</em></div>';
                         }
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";
@@ -209,7 +229,7 @@ session_abort();
                             // Free result set
                             mysqli_free_result($result);
                         } else{
-                            echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+                            echo '<div class="alert alert-danger"><em>Aucune informations trouvées ou compte invalide.</em></div>';
                         }
                     } else{
                         echo "Oops! Something went wrong. Please try again later.";

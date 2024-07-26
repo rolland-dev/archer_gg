@@ -161,10 +161,15 @@ input, textarea{
     width: 50% !important;
     margin: 10px;
 }
-@media screen and (max-width: 400px) {
 
+/* Version mobile */
+@media screen and (max-width: 450px) {
+  
     body{
         width: 100%;
+    }
+    .navbar-nav{
+        text-align: center !important;
     }
     .slider {
         display: none !important;
@@ -187,11 +192,45 @@ input, textarea{
         padding-right: 10px !important;
         width: 80% !important;
     }
+    .mobile1{
+        display: none !important;
+        border-style: hidden !important;
+    }
+
+    .ecran{
+        display: flex;
+        width: auto !important;
+        flex-direction: column;
+    }
+    .photos{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        flex-grow: 1;
+    }
+    .photos>img{
+        width: 100%;
+    }
+
+    .image{
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+    }
+
+    .messages{
+        border: blue solid 2px;
+        border-radius: 15px;
+        width: 90%;
+        padding: 4px; 
+    }
     .horaire, .equipes {
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 100%;
+        margin-bottom: 80px;
     }
     iframe{
         width: 90%;
@@ -243,38 +282,36 @@ input, textarea{
 
     }
 
-    /* .footer {
+    .footer {
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 110px;
+        height: 70px;
+        margin-top: 40px;
+        text-align: center;
         font-size: x-large;
         position: fixed;
         bottom: 0px;
         left: auto;
-        background-color: green;
-        color: rgb(0, 116, 55);
-    } */
-
-    .fgauche {
-        display: none;
+        background-color: #0d6EFD;
+        color: whitesmoke !important;
     }
 
-    .fdroite,
-    .centre {
-        display: flex;
-        justify-content: center;
-
-    }
-
-    .fdroite>a {
+    .fcentre>a{
         text-decoration: none;
-        color: rgb(0, 116, 55);
-        font-size: x-large;
+        color: whitesmoke !important;
+    }
+    .footer>.maj{
+        font-size: small !important;
+        color: whitesmoke;
     }
 }
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 451px) {
+    a.nav-link{
+        font-size:medium !important;
+    }
+    
     .calendar {
         width: 80% !important;
         display: flex;
@@ -296,6 +333,20 @@ input, textarea{
         width: 70% !important;
 
     }
+    .ecran{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content :space-around;
+    }
+    .photos{
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        margin: 10px;
+    }
+
 
     .carte {
         display: flex;
@@ -303,6 +354,8 @@ input, textarea{
         margin: auto 5px;
     }
 
+  
+    
     .div {
         display: flex;
     }
@@ -310,7 +363,9 @@ input, textarea{
     .img {
         width: 15%;
     }
-
+    .groupe{
+        display: none;
+    }
 
     .complet {
         display: flex;
@@ -318,32 +373,38 @@ input, textarea{
         justify-content: center;
         /* align-items: stretch; */
     }
-
+.messages{
+    border: blue solid 2px;
+    border-radius: 15px;
+    width: 80%;
+    padding: 4px; 
+}
 
     /* Footer */
 
-    /* .footer {
+    .footer {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         width: 100%;
-        justify-content: space-around;
-        border: 1px solid #bebebe;
-        background-color: #bebebe;
+        justify-content: center;
+        text-align: center;
         color: blanchedalmond;
         padding: 10px;
-    } */
+    }
 
-    .fgauche,
-    .fcentre,
-    .fdroite {
+    
+    .fcentre
+     {
         display: flex;
+        justify-content: center;
         color: rgb(0, 116, 55) !important;
         font-size: x-large;
     }
-
-    .fdroite>a {
-        text-decoration: none !important;
-        color: rgb(0, 116, 55) !important;
+    .footer>.maj{
+        display: flex;
+        justify-content: center;
+        font-size: small !important;
+        color: blue !important;
         font-size: x-large;
     }
 

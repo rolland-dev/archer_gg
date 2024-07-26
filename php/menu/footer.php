@@ -2,12 +2,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
     <div class="footer">
-        <div class="fgauche"><img src="" alt="" width="35%"></div>
 
-        <div class="fcentre text-center"><br></div>
-
-        <div class="fdroite">
-          
-        </div>
+        <div class="fcentre">
+            <a href="./fichiers/CGU.pdf" target="_blank">CGU</a> 
+        <br></div>
+        <div class="maj"><p>Mise à jour le 28/06/2024 - RLDéveloppement</p></div>
     </div>
-    <div class="text-center text-primary"><p>Mise à jour le 30/01/2024 - RLDéveloppement</p></div>
