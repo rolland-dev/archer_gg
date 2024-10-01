@@ -1,0 +1,28 @@
+{
+    "palette":{
+        "latérale" : "laterale",
+        "numéro" : "numero",
+        "taille" : "taille",
+        "divers" : "divers"
+    },
+    "gant":{
+        "latérale" : "laterale",
+        "numéro" : "numero",
+        "taille" : "taille",
+        "divers" : "divers"
+    },
+    "protection":{
+        "latérale" : "laterale",
+        "numéro" : "numero",
+        "taille" : "taille",
+        "divers" : "divers"
+    },
+    "carquoi":{
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "reposearc":{
+        "nombre" : "nombre",
+        "divers" : "divers"
+    }
+}

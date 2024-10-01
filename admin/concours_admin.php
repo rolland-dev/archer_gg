@@ -8,10 +8,10 @@ if(isset($_SESSION['login'])){
 
   if(isset($_SESSION['role'])){
     $role=$_SESSION['role'];
-    if($role!="ADMIN") header("Location: ../index.php");
+    if(($role=="USER")) header("Location: ../index.php");
   }else{
     $role='';
-    if($role!="ADMIN") header("Location: ../index.php");
+    header("Location: ../index.php");
   }
   
   if(isset($_SESSION['erreur'])){
@@ -130,7 +130,7 @@ if(isset($_SESSION['login'])){
                                         echo "<td>" . $row['classement'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="./crud_concours/update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                            echo '<a href="./crud_concours/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                            echo '<a href="./crud_concours/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span style="color:red" class="fa fa-trash p-2"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                     $groupe+=1;
@@ -145,7 +145,7 @@ if(isset($_SESSION['login'])){
                                         echo "<td>" . $row['classement'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="./crud_concours/update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                            echo '<a href="./crud_concours/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                            echo '<a href="./crud_concours/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span style="color:red" class="fa fa-trash p-2"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                    
@@ -174,8 +174,8 @@ if(isset($_SESSION['login'])){
 <form action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" method="post">
     <input type="submit" class="btn btn-primary" value="Classement AUTO">
 </form>
-    <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+<footer>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 
 </head>

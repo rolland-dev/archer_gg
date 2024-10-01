@@ -24,7 +24,7 @@ if (isset($_SESSION['erreur'])) {
         <h1>Connectez-vous</h1>
         <br><br>
         <form action="traitement.php" method="post" class="cnx" ">
-        <label>Votre identifiant</label><br>
+        <label>Votre identifiant (nom.prénom)</label><br>
         <input type=" text" placeholder="Login" name="login"><br>
             <label>Votre mot de passe</label><br>
             <input type="password" name="password" placeholder="Mot de passe"><br><br>

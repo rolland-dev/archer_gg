@@ -20,7 +20,7 @@
                     // Include config file
                     require_once "./php/bdd/config.php";
                     
-                    $sql1 = "SELECT * FROM documents";
+                    $sql1 = "SELECT DISTINCT date FROM documents ORDER BY date DESC";
                     $date=array();
                     if($result1 = mysqli_query($link, $sql1)){
                         if(mysqli_num_rows($result1) > 0){

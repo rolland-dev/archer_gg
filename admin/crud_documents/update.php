@@ -28,8 +28,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $name = $_FILES['img']['name'];
             $size = $_FILES['img']['size'];
             $error = $_FILES['img']['error'];
-            move_uploaded_file($tmpName, '../../img/blog/'.$name);
-            $img = 'img/blog/'.$name;
+            move_uploaded_file($tmpName, '../../fichiers/'.$name);
+            $img = './fichiers/'.$name;
         }else{
             $img = $_POST['imgbase'];
         }

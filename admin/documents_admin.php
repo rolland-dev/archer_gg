@@ -76,7 +76,7 @@ session_abort();
                                         echo "<td>" . $row['lien'] . "</td>";
                                         echo "<td>";
                                                 echo '<a href="./crud_documents/update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                                echo '<a href="./crud_documents/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                                echo '<a href="./crud_documents/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span style="color:red" class="fa fa-trash p-2"></span></a>';
                                             echo "</td>";
                                     echo "</tr>";
                                     
@@ -101,7 +101,7 @@ session_abort();
     </div>
 
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 </body>
 

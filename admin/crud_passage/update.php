@@ -58,7 +58,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_id = $id;
 
             if(mysqli_stmt_execute($stmt)){
-                header("location: ../passage_admin.php");
+                // header("location: ../passage_admin.php");
+                
+                $choix=$_SESSION['choix'];
+                $archer=$_SESSION['archer'];
+                header("Location: ../fiche_passage.php?choix=$choix&archer=$archer");
                 exit();
             } else{
                 echo "Oops! erreur inattendu, rééssayez ultérieusement";
@@ -75,7 +79,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $id =  trim($_GET["id"]);
         $nbtir =  trim($_GET["nbtir"]);
         $archer = trim($_GET['archer']);
+        $_SESSION['archer']=$archer;
         $choix = trim($_GET['choix']);
+        $_SESSION['choix']=$choix;
        
     }
 }

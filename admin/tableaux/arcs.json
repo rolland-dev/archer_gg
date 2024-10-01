@@ -1,0 +1,50 @@
+{
+    "arc":{
+        "longueur_poignee" : "lgpoignee",
+        "longueur_arc" : "lgarc",
+        "branches" : "branches",
+        "puissance" : "puissance",
+        "latérale" : "laterale",
+        "numéro" : "numero",
+        "archers" : "archers",
+        "divers" : "divers"
+    },
+    "poignee":{
+        "longueur_poignee" : "lgpoignee",
+        "latérale" : "laterale",
+        "numéro" : "numero",
+        "divers" : "divers"
+    },
+    "branche":{
+        "nombre" : "nombre",
+        "numéro" : "numero",
+        "divers" : "divers"
+    },
+    "fleche":{
+        "longueur_fleche" : "lgfleche",
+        "spine" : "spin",
+        "nombre" : "nombre",
+        "diametre" : "diametre",
+        "grain" : "grains",
+        "divers" : "divers"
+    },
+    "corde":{
+        "longeur" : "lgcorde",
+        "brins" : "nbbrins",
+        "type" : "typecorde",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "plume":{
+        "taille" : "tailleplume",
+        "couleur" : "couleurplume",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "pointe":{
+        "grain" : "grains",
+        "diametre" : "diametre",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    }
+}

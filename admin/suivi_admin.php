@@ -6,17 +6,13 @@ if(isset($_SESSION['login'])) {
     $connect = '';
 }
 
-if(isset($_SESSION['role'])) {
-    $role = $_SESSION['role'];
-    if($role != "ADMIN") {
-        header("Location: ../index.php");
-    }
-} else {
-    $role = '';
-    if($role != "ADMIN") {
-        header("Location: ../index.php");
-    }
-}
+if(isset($_SESSION['role'])){
+    $role=$_SESSION['role'];
+    if(($role=="USER")) header("Location: ../index.php");
+  }else{
+    $role='';
+    header("Location: ../index.php");
+  }
 
 if(isset($_SESSION['erreur'])) {
     $erreur = $_SESSION['erreur'];
@@ -48,7 +44,10 @@ session_abort();
     <?php require_once './menu/menu_admin.php'; ?>
     <h1 class="text-center">Suivi des Archers</h1>
     <br>
-   
+    <div class="text-center">
+        <a href="../pdf_admin.php" target="_blank" class="btn btn-secondary">Générer PDF</a>
+    </div>
+    <br>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">

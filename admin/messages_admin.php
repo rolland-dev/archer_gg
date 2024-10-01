@@ -47,6 +47,9 @@ session_abort();
         echo '<a href="./crud_messages/create.php" class="mr-3 " title="create produit" data-toggle="tooltip"><button class="fas fa-plus" style="text-aligne: center; padding:5px; border: none; border-radius:5px;"> Ajout message</button></a>';
         ?>
     </div><br>
+    <div>
+        <h4 class="text-center">Si valide est à 0 donc message envoyé en mail privé vers tous les archers</h4>
+    </div>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -56,7 +59,7 @@ session_abort();
                     require_once "../php/bdd/config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM messages";
+                    $sql = "SELECT * FROM messages ORDER BY date DESC";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo '<table class="table table-bordered table-striped">';
@@ -83,7 +86,7 @@ session_abort();
                                         echo "<td>" . $row['valide'] . "</td>";
                                         echo "<td>";
                                                 echo '<a href="./crud_messages/update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                                echo '<a href="./crud_messages/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                                echo '<a href="./crud_messages/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span style="color:red" class="fa fa-trash p-2"></span></a>';
                                             echo "</td>";
                                     echo "</tr>";
                                     
@@ -108,7 +111,7 @@ session_abort();
     </div>
 
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 </body>
 

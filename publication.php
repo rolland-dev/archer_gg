@@ -13,7 +13,7 @@
     <h1>Fils de publications</h1>
     <?php
      require_once "./php/bdd/config.php";
-        $sql = "SELECT * FROM messages ";
+        $sql = "SELECT * FROM messages WHERE valide='1' ORDER BY date DESC";
         if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) { 
     ?>
@@ -23,7 +23,7 @@
         <?php
             while ($row = mysqli_fetch_array($result)) {
         ?>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center m-3">
            <div class="messages">
                 <figure class="text-center">
                 <blockquote class="blockquote">

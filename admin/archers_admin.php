@@ -8,10 +8,10 @@ if(isset($_SESSION['login'])){
 
   if(isset($_SESSION['role'])){
     $role=$_SESSION['role'];
-    if($role!="ADMIN") header("Location: ../index.php");
+    if(($role=="USER")) header("Location: ../index.php");
   }else{
     $role='';
-    if($role!="ADMIN") header("Location: ../index.php");
+    header("Location: ../index.php");
   }
   
   if(isset($_SESSION['erreur'])){
@@ -108,8 +108,8 @@ if(isset($_SESSION['login'])){
                                         echo "<td>" . $row['valide'] . "</td>";
                                         echo "<td>" . $row['create_user'] . "</td>";
                                         echo "<td class='d-flex justify-content-around w-100'>";
-                                                echo '<a href="./crud_archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                                echo '<a href="./crud_archers/delete.php?id='. $row['id'] .'" title="supprimer archer" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                                echo '<a href="./crud_archers/update.php?id='. $row['id'] .'" class="mr-3" title="mise a jour archer" data-toggle="tooltip"><span style="color:green" class="fas fa-pencil-alt p-2"></span></a>';
+                                                echo '<a href="./crud_archers/delete.php?id='. $row['id'] .'" title="supprimer archer" data-toggle="tooltip"><span style="color:red" class="fa fa-trash p-2"></span></a>';
                                                 if($row['create_user']==0):
                                                     echo '<a href="./crud_archers/create_user.php?nom='. $row['nom']  . '&prenom=' . $row['prenom'] .'&email=' . $row['email'].'&id=' . $row['id']. '" title="creer utilisateur" data-toggle="tooltip"><span class="fa fa-user p-2"></span></a>';
                                                 endif;
@@ -140,7 +140,7 @@ if(isset($_SESSION['login'])){
     </div>
     
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 
 </head>

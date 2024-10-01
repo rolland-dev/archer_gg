@@ -48,7 +48,7 @@ if (isset($_SESSION['role'])) {
                         <a class="dropdown-item" href="./suivi_admin.php">Suivi archers</a>
                         <a class="dropdown-item" href="./passage_admin.php">Passage flèche/plumes</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">options</a>
+                        <a class="dropdown-item" href="#">option</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -70,6 +70,20 @@ if (isset($_SESSION['role'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="./description_admin.php">flèche/plumes
                     </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Inventaires</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./categorie_admin.php">Catégories</a>
+                        <a class="dropdown-item" href="./arcs_admin.php">Equipements Arcs</a>
+                        <a class="dropdown-item" href="./eqarchers_admin.php">Equipements Archers</a>
+                        <a class="dropdown-item" href="./cibles_admin.php">Cibleries</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">options</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./aide.php">Aides</a>
                 </li>
             </ul>
             <ul class="navbar-nav login">

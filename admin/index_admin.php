@@ -54,6 +54,8 @@ session_abort();
                     // Attempt select query execution
                     $sql = "SELECT * FROM users";
                     if($result = mysqli_query($link, $sql)){
+                        $nb_user = mysqli_num_rows($result);
+                        echo '<div class="text-center">Nombres d\'archers inscrits : '.$nb_user.' </div>';
                         if(mysqli_num_rows($result) > 0){
                             echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
@@ -74,11 +76,23 @@ session_abort();
                                         echo "<td>" . $row['login'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";
                                         echo "<td>" . $row['archer_id'] . "</td>";
-                                        echo "<td>" . $row['role'] . "</td>";
-                                        echo "<td>";
+                                        if($row['role']=="ARCHER")
+                                            echo "<td>" . $row['role'] . "</td>";
+                                        if($row['role']=="ADMIN")
+                                            echo "<td style='color:red'>" . $row['role'] . "</td>";
+                                        if($row['role']=='SUPERADMIN')
+                                             echo "<td style='color:red;background-color:yellow'>" . $row['role'] . "</td>";
+                                        if($row['role']!='SUPERADMIN'){
+                                            echo "<td>";
                                                 echo '<a href="./crud_users/update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt p-2"></span></a>';
-                                                echo '<a href="./crud_users/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash p-2"></span></a>';
+                                                echo '<a href="./crud_users/delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span style="color:red" class="fa fa-trash p-2"></span></a>';
                                             echo "</td>";
+                                        }else{
+                                            echo "<td>";
+                                                echo 'Accés Interdit';
+                                            echo "</td>";
+                                        }
+                                       
                                     echo "</tr>";
                                     
                                 }
@@ -102,7 +116,7 @@ session_abort();
     </div>
 
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 </body>
 

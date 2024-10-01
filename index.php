@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <?php require_once './php/menu/head.php' ?>
     <title>Accueil</title>
+    <meta name="google-site-verification" content="5kwZkqKxPgMLyE6jC4HA-_QMUMxjarv_ly4MXnoSdxE" />
 </head>
 
 <body>
@@ -23,44 +24,44 @@
                 <div class="slider">
                     <div class="slide-track">
                         <div class="slide">
-                            <img src="<?= $img[0] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[0] ?>" height="500" width="750" alt="<?= $img[0] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[1] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[1] ?>" height="500" width="750" alt="<?= $img[1] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[2] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[2] ?>" height="500" width="750" alt="<?= $img[2] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[3] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[3] ?>" height="500" width="750" alt="<?= $img[3] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[4] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[4] ?>" height="500" width="750" alt="<?= $img[4] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[0] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[0] ?>" height="500" width="750" alt="<?= $img[0] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[1] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[1] ?>" height="500" width="750" alt="<?= $img[1] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[2] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[2] ?>" height="500" width="750" alt="<?= $img[2] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[3] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[3] ?>" height="500" width="750" alt="<?= $img[3] ?>" />
                         </div>
                         <div class="slide">
-                            <img src="<?= $img[4] ?>" height="500" width="750" alt="" />
+                            <img src="<?= $img[4] ?>" height="500" width="750" alt="<?= $img[4] ?>" />
                         </div>
                     </div>
                 </div>
 <br>
     <!-- infos générales -->
     <hr>
-    <h1>Fils de publications</h1>
+    <h2>Fils de publications</h2>
     <?php
      require_once "./php/bdd/config.php";
-        $sql = "SELECT * FROM messages ORDER BY date DESC";
+        $sql = "SELECT * FROM messages WHERE valide='1' ORDER BY date DESC LIMIT 5";
         if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) { 
     ?>
@@ -91,11 +92,11 @@
     </div>
 <br>
 <hr>
-    <h1>Informations diverses</h1> 
+    <h2>Informations diverses</h2> 
     <!-- horaires, situation et contact  -->
     <div class="horaire w-100">
         <div class="card text-white bg-primary mb-3 text-center" style="max-width: 40rem;">
-            <div class="card-header"><h1>Horaires</h1></div>
+            <div class="card-header"><h2>Horaires</h2></div>
             <div class="card-body">
                 <h4 class="card-title">Le mercredi (encadré)</h4>
                 <p class="card-text">De 14h à 15h30</p>
@@ -110,7 +111,7 @@
             </div>
         </div>
         <div class="card text-white bg-primary mb-5 text-center" style="max-width: 40rem;">
-            <div class="card-header"><h1>Plan (salle)</h1></div>
+            <div class="card-header"><h2>Plan (salle)</h2></div>
             <div class="card-body">
                 <h4 class="card-title">5 rue Louis Bertaux<br>02190 Villeneuve sur Aisne</h4>
                 <p class="card-text"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2594.508046045567!2d3.9575495927122533!3d49.4371140861131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e9a378acba4329%3A0xdf2a1287eee1a429!2sLa%20petite%20Gare!5e0!3m2!1sfr!2sfr!4v1702562057750!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>

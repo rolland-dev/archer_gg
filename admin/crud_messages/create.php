@@ -1,8 +1,8 @@
 <?php
 require_once "../../php/bdd/config.php";
 
-$lien = $editeur = $commentaire = "";
-$lien_err = $editeur_err = $commentaire_err = "";
+$lien = $editeur = $commentaire = $valide ="";
+$lien_err = $editeur_err = $commentaire_err = $valide_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -18,6 +18,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $commentaire_err = "entrer un commentaire";     
     } else{
         $commentaire = $input_commentaire;
+    }
+    $input_valide = htmlspecialchars($_POST["valide"]);
+    if(empty($input_valide)){
+        $valide_err = "entrer une validité";     
+    } else{
+        $valide = $input_valide;
     }
 
     if(isset($_FILES['img'])){
@@ -35,12 +41,59 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_commentaire = $commentaire;
             $param_lien = $lien;
             $param_date = date("Y-m-d");
-            $param_valide = true;
+            $param_valide = $valide;
             
             $sql = "INSERT INTO messages (lien, date, editeur, commentaire , valide) VALUES ( '$param_lien', '$param_date', '$param_editeur', '$param_commentaire', '$param_valide')";
           
             $result = mysqli_query($link, $sql);
             if($result){
+
+                $sql1 = "SELECT email FROM archers "; //WHERE valide=1
+                $email1=array();
+                if($result1 = mysqli_query($link,$sql1)){
+                    if(mysqli_num_rows($result1)>0){
+                        while($row1 = mysqli_fetch_array($result1)){
+                            if($row1['email']!=""){
+                                array_push($email1, $row1['email']);
+                            }
+                        }
+                    }
+                }
+                
+                if($valide===1){
+                    foreach($email1 as $email){
+                        // envoi de mail
+                        ini_set( 'display_errors', 1 );
+                        error_reporting( E_ALL );
+                        $from = "contact@archersdeguignicourt.fr";
+                        $to = $email;
+                        $subject = "Message Archers de Guignicourt". $email;
+                        $message = "Bonjour, un nouveau message a été déposé le site des archers de Guignicourt, accédez https://www.archersdeguignicourt.fr .  Cordialement l'équipe des Archers de Guignicourt.";
+                        $headers[] = 'MIME-Version: 1.0';
+                        $headers[] = 'Content-type: text/html; charset=utf-8';
+                        $headers[] = "De :" . $from;
+                        mail($to,$subject,$message, implode("\r\n",$headers));
+                        echo "L'email a été envoyé.";
+                        // fin envoi mail
+                    }
+                }else{
+                    foreach($email1 as $email){
+                        // envoi de mail
+                        ini_set( 'display_errors', 1 );
+                        error_reporting( E_ALL );
+                        $from = "contact@archersdeguignicourt.fr";
+                        $to = $email;
+                        $subject = "Message Archers de Guignicourt". $email;
+                        $message = $commentaire;
+                        $headers[] = 'MIME-Version: 1.0';
+                        $headers[] = 'Content-type: text/html; charset=utf-8';
+                        $headers[] = "De :" . $from;
+                        mail($to,$subject,$message, implode("\r\n",$headers));
+                        echo "L'email a été envoyé.";
+                        // fin envoi mail
+                    }
+                }
+                
                 mysqli_close($link);
                 header("location: ../messages_admin.php");
                 exit();
@@ -79,6 +132,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="form-group">
                             <label>Commentaire</label>
                             <textarea name="commentaire" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Valide (si message interne, mettre 0)</label>
+                            <input type="number" name="valide" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="file">Fichier</label>

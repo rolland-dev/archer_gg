@@ -1,7 +1,9 @@
 <?php
+session_start();
+
 require_once "../../php/bdd/config.php";
 
-$nom = $prenom = $sexe = $daten = $email = $tel = $mobile = $pere = $mere = $numlicence = $licence = $droitimg = $certif = $valide= "";
+$nom = $prenom = $sexe = $daten = $email = $tel = $mobile = $pere = $mere = $numlicence = $licence = $droitimg = $certif = $valide= $create = "";
 $nom_err = $prenom_err = $sexe_err = $daten_err = $email_err = "";
 
 
@@ -48,14 +50,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     $droitimg = trim($_POST['droitimg']);
     $certif = trim($_POST['certif']);
     $valide = trim($_POST['valide']);
-   
+    $create = trim($_POST['create']);
 
     if(empty($nom_err) && empty($prenom_err) && empty($sexe_err) && empty($daten_err) ){
 
-        $sql = "UPDATE archers SET nom=?, prenom=?, sexe=?, date_n=?, email=?, tel=?, mobile=?, pere=? , mere=?, numlicence=?, licence=?, droitimg=?, certif=? ,valide=? WHERE id=?";
+        $sql = "UPDATE archers SET nom=?, prenom=?, sexe=?, date_n=?, email=?, tel=?, mobile=?, pere=? , mere=?, numlicence=?, licence=?, droitimg=?, certif=? ,valide=? ,create_user=? WHERE id=?";
 
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "sssssssssssiiii", $param_nom, $param_prenom, $param_sexe, $param_daten, $param_email, $param_tel, $param_mobile, $param_pere, $param_mere,$param_numlicence, $param_licence,$param_droitimg, $param_certif, $param_valide, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssssssssssiiiii", $param_nom, $param_prenom, $param_sexe, $param_daten, $param_email, $param_tel, $param_mobile, $param_pere, $param_mere,$param_numlicence, $param_licence,$param_droitimg, $param_certif, $param_valide, $param_create, $param_id);
             
             $param_nom = $nom;
             $param_prenom = $prenom;
@@ -71,9 +73,21 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $param_certif = $certif;
             $param_droitimg = $droitimg;
             $param_valide = $valide;
+            $param_create = $create;
             $param_id = $_GET['id'];
 
             if(mysqli_stmt_execute($stmt)){
+                if($create != $_SESSION['create_old']){
+                    $param_id1 = $_GET['id'];
+                    $sql1 = "DELETE FROM users WHERE archer_id = ?";
+                    
+                    if($stmt1 = mysqli_prepare($link, $sql1)){
+                        // Bind variables to the prepared statement as parameters
+                        mysqli_stmt_bind_param($stmt1, "i", $param_id1);
+                        // Attempt to execute the prepared statement
+                        mysqli_stmt_execute($stmt1);
+                    }
+                }
                 header("location: ../archers_admin.php");
                 exit();
             } else{
@@ -114,6 +128,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $certif = $row['certif'];
                     $droitimg = $row['droitimg'];
                     $valide = $row['valide'];
+                    $create = $row['create_user'];
+                    $_SESSION['create_old'] = $row['create_user'];
                     $id = $row["id"];
                     
                 } else{
@@ -210,6 +226,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <div class="form-group">
                             <label>Compte Valide (valide=1 sinon 0)</label>
                             <input type="bool" name="valide" class="form-control" value="<?php echo $valide; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>User créé (valide=1 sinon 0 / passer à 0 revoie une demande d'inscription)</label>
+                            <input type="bool" name="create" class="form-control" value="<?php echo $create; ?>">
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         <input type="submit" class="btn btn-primary" value="Enregistrer">

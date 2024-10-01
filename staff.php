@@ -27,7 +27,7 @@
         </div>
        
         <div class="card-footer text-muted">
-            <h5 class="card-text text-center">mail</h5>
+            <h5 class="card-text text-center">pasquali.dominique@wanadoo.fr</h5>
         </div>
     </div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="card-footer text-muted">
-            <h5 class="card-text text-center">mail</h5>
+            <h5 class="card-text text-center">pascal.hochet@nordnet.fr</h5>
         </div>
     </div>
 

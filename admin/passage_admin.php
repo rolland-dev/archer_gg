@@ -159,7 +159,7 @@ session_abort();
     </form>
 
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 </body>
 

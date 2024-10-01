@@ -1,0 +1,36 @@
+{
+    "blason":{
+        "taille" : "taille",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "2d":{
+        "taille" : "taille",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "cible":{
+        "taille" : "taille",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "chevalet":{
+        "taille" : "taille",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "bete":{
+        "taille" : "taille",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "filet":{
+        "taille" : "taille",
+        "nombre" : "nombre",
+        "divers" : "divers"
+    },
+    "accessoire":{
+        "nombre" : "nombre",
+        "divers" : "divers"
+    }
+}

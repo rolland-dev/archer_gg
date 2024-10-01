@@ -27,7 +27,7 @@ if (isset($_SESSION['role'])) {
 
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="./index.php"><img src="./img/logo.png" alt=""> </a>
+        <a class="navbar-brand" href="./index.php"><img src="./img/logo.png" alt="logo"> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,9 +66,18 @@ if (isset($_SESSION['role'])) {
                         <a class="nav-link" href="./inscription.php">Inscription</a>
                     </li>
                 <?php endif; ?>
-                <?php if ($ROLE == "ADMIN") : ?>
+                
+                <?php if ($ROLE == "ADMIN"): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="./Admin/index_admin.php">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./archer.php">Mon compte</a>
+                    </li>
+                <?php endif; ?>
+                <?php if ($ROLE == "SUPERADMIN") : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Admin/index_admin.php">Super_Admin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./archer.php">Mon compte</a>
@@ -93,7 +102,7 @@ if (isset($_SESSION['role'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-            <h3 class="animate-charcter"> La Compagnie des Archers de Guignicourt</h3>
+            <h1 class="animate-charcter"> La Compagnie des Archers de Guignicourt</h1>
             </div>
         </div>
     </div>

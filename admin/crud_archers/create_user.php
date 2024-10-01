@@ -40,20 +40,37 @@ if (isset($_POST['submit'])) {
         $param_email = $email_ok;
         $param_id = $archer_id;
 
-                if (mysqli_stmt_execute($stmt)) {
+        if (mysqli_stmt_execute($stmt)) {
             // envoi de mail
             ini_set( 'display_errors', 1 );
             error_reporting( E_ALL );
-            $from = "contact@archerguignicourt.fr";
+            $from = "contact@archersdeguignicourt.fr";
             $to = $email_ok;
-            $subject = "Création de votre mot de passe". $email_ok;
-            $message = "Bonjour, afin de finaliser l'accés a votre compte archer, merci de vous rendre sur le site https://www.archerguignicourt.fr rebrique 'inscription' et de remplir les champs comme indiqués.  Cordialement l'équipe des Archers de Guignicourt.";
+            $subject = "Création de votre mot de passe ". $email_ok;
+            $message = "Bonjour, afin de finaliser l'accés a votre compte archer, merci de vous rendre sur le site https://www.archersdeguignicourt.fr rubrique 'inscription' et de remplir les champs comme indiqués avec votre login suivant: ". $login_ok." .Cordialement l'équipe des Archers de Guignicourt.";
             $headers = "De :" . $from;
             mail($to,$subject,$message, $headers);
             echo "L'email a été envoyé.";
             // fin envoi mail
-            header("location: ../archers_admin.php");
-            exit();
+
+            $id = $_GET['id'];
+            $sql = "UPDATE archers SET create_user=? WHERE id = '$id'";
+    
+            if($stmt = mysqli_prepare($link, $sql)){
+                // Bind variables to the prepared statement as parameters
+                mysqli_stmt_bind_param($stmt, "i", $reset);
+                $reset = true;
+                // Attempt to execute the prepared statement
+                if(mysqli_stmt_execute($stmt)){
+                    // Records deleted successfully. Redirect to landing page
+                    header("location: ../archers_admin.php");
+                    exit();
+                } else{
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+            }
+
+            
         }
     }
 }
@@ -75,12 +92,12 @@ if (isset($_POST['submit'])) {
 
         <form method="post" class="cnx">
             <label>Votre 'nom.prénom'</label><br>
-            <input type="text" placeholder="nom.prénom" name="pseudo" value="<?php echo $nom.'.'.$prenom ?>"><br><br>
+            <input type="text" placeholder="nom.prénom" name="pseudo" value="<?php echo strtolower($nom).'.'.strtolower($prenom) ?>"><br><br>
             <label>Votre email</label><br>
             <input type="text" placeholder="email" name="email" value="<?php echo $email?>"><br><br>
             <label>Rôle ('ARCHER' ou 'ADMIN')</label><br>
-            <input type="text" name="role" placeholder="rôle"><br><br>
-            <input type="submit" name="submit" value="Créer" class="btn btn-secondary ml-2">
+            <input type="text" name="role" id="role" placeholder="rôle" onchange="checkForm()"><br><br>
+            <input type="submit" name="submit" id="submit" value="Créer" class="btn btn-secondary ml-2" style="visibility:hidden;">
             <a href="../archers_admin.php" class="btn btn-secondary ml-2">Annuler</a>
         </form>
 
@@ -88,6 +105,14 @@ if (isset($_POST['submit'])) {
 
         </div>
     </div>
+    <script type="text/javascript">
+    function checkForm(){
+        console.log(document.getElementById('role').value.length);
+        if(document.getElementById('role').value.length > 0){
+            document.getElementById('submit').style.visibility="visible";
+        }
+    }
+    </script>
     <!-- <?php include './php/menu/footer.php' ?> -->
 </body>
 

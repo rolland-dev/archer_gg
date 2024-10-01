@@ -89,8 +89,69 @@ if(!mysqli_query($link,$sql)){
     echo "Erreur de création";
 }
 
+// creation table categories procédurale
+$sql = "create table if not exists categories(
+    id int(6) unsigned auto_increment primary key,
+    categorie text not null)";
 
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
 
+// creation table equipement arc procédurale
+$sql = "create table if not exists eqarcs(
+    id int(6) unsigned auto_increment primary key,
+    categorie text null,
+    lgpoignee int null,
+    lgarc int null,
+    branches text null,
+    puissance int null,
+    lateral varchar(20) null,
+    numero int null,
+    archers text null,
+    lgfleche int null,
+    spin int null,
+    diametre float null,
+    lgcorde int null,
+    nombre int null,
+    nbbrins int null,
+    typecorde text null,
+    nockset text null,
+    grains float null,
+    tailleplume float null,
+    couleurplume varchar(20) null,
+    divers text null)";
+
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
+
+// creation table equipement archers procédurale
+$sql = "create table if not exists eqarchers(
+    id int(6) unsigned auto_increment primary key,
+    categorie text null,
+    laterale varchar(20) null,
+    numero int null,
+    archers text null,
+    taille varchar(10) null,
+    nombre int null,
+    divers text null)";
+
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
+
+// creation table equipement archers procédurale
+$sql = "create table if not exists cibles(
+    id int(6) unsigned auto_increment primary key,
+    categorie text null,
+    taille varchar(10) null,
+    nombre int null,
+    divers text null)";
+
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
 
 $link -> close();
 

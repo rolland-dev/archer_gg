@@ -40,7 +40,7 @@
                                     
                                     echo '<div class="photos">';
                                         $id_img = $row['id'];
-                                        echo '<img src="./' . $row['lien'] . '"/>';
+                                        echo '<img src="./' . $row['lien'] . '" alt="'. $row['commentaire'] .'"/>';
                                         echo "<p class='text-center'>Le " . date('d-m-Y', strtotime($row['date'])) ."<br>". $row['commentaire'] . "</p>";
                                     echo "</div>";
                                 }

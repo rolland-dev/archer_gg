@@ -25,7 +25,7 @@ session_abort();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 <meta charset="UTF-8">
@@ -245,6 +245,9 @@ session_abort();
 
     <div class="text-center">
         <a href="./index.php" class="btn btn-secondary">Retour</a>
+    </div>
+    <div class="text-center">
+        <a href="./pdf.php" target="_blank" class="btn btn-secondary">Générer PDF</a>
     </div>
     
 </body>

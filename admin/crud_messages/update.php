@@ -27,6 +27,33 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $param_id = $_GET['id'];
 
             if(mysqli_stmt_execute($stmt)){
+                $sql1 = "SELECT email FROM archers "; //WHERE valide=1
+                $email1=array();
+                if($result1 = mysqli_query($link,$sql1)){
+                    if(mysqli_num_rows($result1)>0){
+                        while($row1 = mysqli_fetch_array($result1)){
+                            if($row1['email']!=""){
+                                array_push($email1, $row1['email']);
+                            }
+                        }
+                    }
+                }
+                
+                foreach($email1 as $email){
+                    // envoi de mail
+                    ini_set( 'display_errors', 1 );
+                    error_reporting( E_ALL );
+                    $from = "contact@archersdeguignicourt.fr";
+                    $to = $email;
+                    $subject = "Message Archers de Guignicourt". $email;
+                    $message = "Bonjour, un nouveau message a été déposé le site des archers de Guignicourt, accédez https://www.archersdeguignicourt.fr .  Cordialement l'équipe des Archers de Guignicourt.";
+                    $headers[] = 'MIME-Version: 1.0';
+                    $headers[] = 'Content-type: text/html; charset=utf-8';
+                    $headers[] = "De :" . $from;
+                    mail($to,$subject,$message, implode("\r\n",$headers));
+                    echo "L'email a été envoyé.";
+                    // fin envoi mail
+                }
                 header("location: ../messages_admin.php");
                 exit();
             } else{

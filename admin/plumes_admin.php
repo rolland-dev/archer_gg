@@ -8,16 +8,22 @@ if(isset($_SESSION['login'])){
 
   if(isset($_SESSION['role'])){
     $role=$_SESSION['role'];
-    if($role!="ADMIN") header("Location: ../index.php");
+    if(($role=="USER")) header("Location: ../index.php");
   }else{
     $role='';
-    if($role!="ADMIN") header("Location: ../index.php");
+    header("Location: ../index.php");
   }
   
   if(isset($_SESSION['erreur'])){
     $erreur=$_SESSION['erreur'];
   }else{
     $erreur='';
+  }
+
+  if(isset($_SESSION['total'])){
+    $total=$_SESSION['total'];
+  }else{
+    $total='';
   }
 
   session_abort();
@@ -218,7 +224,7 @@ if (isset($_POST['submit'])) {
     </div>
 
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
     
     </body>

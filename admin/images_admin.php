@@ -8,10 +8,10 @@ if(isset($_SESSION['login'])){
 
   if(isset($_SESSION['role'])){
     $role=$_SESSION['role'];
-    if($role!="ADMIN") header("Location: ../index.php");
+    if(($role=="USER")) header("Location: ../index.php");
   }else{
     $role='';
-    if($role!="ADMIN") header("Location: ../index.php");
+    header("Location: ../index.php");
   }
   
   if(isset($_SESSION['erreur'])){
@@ -99,7 +99,7 @@ require_once "../php/bdd/config.php";
                                 echo "<td>" . $row['commentaire'] . "</td>";
                                 echo "<td>";
                                 echo '<a href="./crud_images/update.php?id=' . $row['id'] . '" class="mr-3 p-3" title="Update Record" data-toggle="tooltip"><span class="fas fa-pencil-alt"></span></a>';
-                                echo '<a href="./crud_images/delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="./crud_images/delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span style="color:red" class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                             }
@@ -123,7 +123,7 @@ require_once "../php/bdd/config.php";
     </div>
     
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 </body>
 

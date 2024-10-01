@@ -8,10 +8,10 @@ if(isset($_SESSION['login'])){
 
   if(isset($_SESSION['role'])){
     $role=$_SESSION['role'];
-    if($role!="ADMIN") header("Location: ../index.php");
+    if(($role=="USER")) header("Location: ../index.php");
   }else{
     $role='';
-    if($role!="ADMIN") header("Location: ../index.php");
+    header("Location: ../index.php");
   }
   
   if(isset($_SESSION['erreur'])){
@@ -107,7 +107,7 @@ require_once "../php/bdd/config.php";
     </div>
     
     <footer>
-        <?php require_once '../php/menu/footer.php' ?>
+        <?php require_once './menu/footer_admin.php' ?>
     </footer>
 </body>
 
