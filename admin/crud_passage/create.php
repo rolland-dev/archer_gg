@@ -32,7 +32,7 @@ for ($i=1; $i <= $compte ; $i++) {
     $id = $id;
     $choix =$choix;
     $val = 0;
-    // var_dump($compte);die;
+    
     $sql = "INSERT INTO passage (id_archer, created_at, couleur, nbtir ,col1,col2,col3,col4,col5,col6, isValide) VALUES ( '$id', '$param_date', '$choix','$i' ,'$val','$val','$val','$val','$val','$val', '$param_valide')";
             
         $result = mysqli_query($link, $sql);

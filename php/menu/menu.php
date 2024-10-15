@@ -22,6 +22,17 @@ if (isset($_SESSION['role'])) {
 } else {
     $ROLE = '';
 }
+
+require_once "./php/bdd/config.php";
+
+    $sql = "SELECT lien FROM contact WHERE valide='1'";
+    if ($result = mysqli_query($link, $sql)) {
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                $contact = $row['lien'];
+            }
+        }
+    }
 ?>
 
 
@@ -50,7 +61,7 @@ if (isset($_SESSION['role'])) {
                     <a class="nav-link" href="./documents.php">Documents</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./contact.php">Contact</a>
+                    <a class="nav-link" href="<?= $contact ?>">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link f" target="_blank" href="https://www.facebook.com/profile.php?id=100054339589718"><i class="fab fa-facebook"></i></a>

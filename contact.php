@@ -87,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div><br>
                     <div class="form-group">
                         <label>Message</label><br>
-                        <textarea type="text" name="message" class="form-controle "></textarea>
+                        <textarea type="text" name="message" class="form-controle " oninput="updateTextareaHeight(this);"></textarea>
                     </div><br>
                     <div class="info">
                         <p></p>
@@ -103,5 +103,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </div><br><br>
 
     <?php require_once './php/menu/footer.php'; ?>
+
+    <script>
+        function updateTextareaHeight(input) {
+            input.style.height = 'auto';
+            input.style.height = input.scrollHeight+'px';
+        }
+    </script>
 </body>
 </html>

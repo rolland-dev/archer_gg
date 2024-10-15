@@ -78,6 +78,11 @@
                 <blockquote class="blockquote">
                     <p class="mb-0"><?= $row['commentaire'] ?></p>
                 </blockquote>
+                <div class="">
+                    <?php if($row['lien']!=''):?>
+                        <img src=".<?= $row['lien']?>" width="50%"/>
+                    <?php endif;?>
+                </div><br>
                 <figcaption class="blockquote-footer">
                     <cite title="Source Title">Le <?= date('d-m-Y', strtotime($row['date'])) ?> de <?= strtoupper($row['editeur']) ?></cite>
                 </figcaption>

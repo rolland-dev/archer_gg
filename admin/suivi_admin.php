@@ -57,7 +57,7 @@ session_abort();
                     require_once "../php/bdd/config.php";
 
 // Attempt select query execution
-$sql = "SELECT * FROM archers ORDER BY nom, prenom DESC";
+$sql = "SELECT * FROM archers WHERE valide=1 ORDER BY nom, prenom DESC ";
 
 if($result = mysqli_query($link, $sql)) {
     if(mysqli_num_rows($result) > 0) {

@@ -33,9 +33,12 @@ if (isset($_SESSION['role'])) {
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./index_admin.php">Accueil
-                    </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Accueil</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./index_admin.php">Connexions</a>
+                        <a class="dropdown-item" href="./secours_admin.php">Contact secours</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./carousel_admin.php">Carousel

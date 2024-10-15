@@ -30,6 +30,7 @@ if (isset($_SESSION['erreur'])) {
             <input type="password" name="password" placeholder="Mot de passe"><br><br>
 
             <br><input type="submit" value="Connexion">
+            <br><br><a href="./reset-password.php" style="text-decoration:none; color:red; font-size:large">Mot de passe oublié !!!</a>
         </form>
 
         <div class="erreur">

@@ -32,7 +32,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $size = $_FILES['img']['size'];
         $error = $_FILES['img']['error'];
         move_uploaded_file($tmpName, '../../img/infos/'.$name);
-        $lien = '/img/infos/'.$name;
+        if($name==''){
+            $lien='';
+        }else{
+            $lien = '/img/infos/'.$name;
+        }
+        
     }
 
     if(empty($editeur_err) && empty($commentaire_err) ){
@@ -48,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $result = mysqli_query($link, $sql);
             if($result){
 
-                $sql1 = "SELECT email FROM archers "; //WHERE valide=1
+                $sql1 = "SELECT email FROM archers WHERE valide=1"; //WHERE valide=1
                 $email1=array();
                 if($result1 = mysqli_query($link,$sql1)){
                     if(mysqli_num_rows($result1)>0){

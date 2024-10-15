@@ -24,12 +24,6 @@ if(isset($_POST["submit"])) {
     if(empty($archer)) {
         $archer_err = "selectionner un archer";
     } else {
-        $nom_archer = $archer;
-        if (isset($_SESSION['id'])) {
-            $id = $_SESSION['id'];
-        } else {
-            $id = '';
-        }
         $_SESSION['archer'] = $archer;
 
         if($plume !='default'){
@@ -47,6 +41,8 @@ if(isset($_POST["submit"])) {
         $plume == 'default' ? $choix=$_SESSION['fleche'] : $choix=$_SESSION['plume'];
         
         header("Location: ./fiche_passage.php?choix=$choix&archer=$archer");
+        //echo "<SCRIPT LANGUAGE='JavaScript'>window.open('./fiche_passage.php?choix='.$choix.'&archer='.$archer.','_blank');</SCRIPT>";
+        //echo "<script language='javascript'>blank.location.href='./fiche_passage.php?choix='.$choix.'&archer='.$archer.''</script>";
     }
     
 }

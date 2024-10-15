@@ -9,7 +9,8 @@ $sql = "create table if not exists users(
     mdp varchar(150) not null,
     email varchar(150) null,
     archer_id int(10) null,
-    role varchar(15) not null)";
+    role varchar(15) not null,
+    reset-psw text null)";
 
 if(!mysqli_query($link,$sql)){
     echo "Erreur de création";
@@ -153,6 +154,15 @@ if(!mysqli_query($link,$sql)){
     echo "Erreur de création";
 }
 
+// creation table equipement archers procédurale
+$sql = "create table if not exists contact(
+    id int(6) unsigned auto_increment primary key,
+    lien text not null,
+    valide int not null)";
+
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
 $link -> close();
 
 ?>

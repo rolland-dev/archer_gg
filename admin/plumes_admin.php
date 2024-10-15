@@ -20,13 +20,7 @@ if(isset($_SESSION['login'])){
     $erreur='';
   }
 
-  if(isset($_SESSION['total'])){
-    $total=$_SESSION['total'];
-  }else{
-    $total='';
-  }
-
-  session_abort();
+session_abort();
 
 require_once "../php/bdd/config.php";
 
@@ -81,7 +75,7 @@ if (isset($_POST['submit'])) {
       $param_couleur = $couleur;
       $param_point = $point;
       $param_date = $date;
-      $param_archers_id = $archers_id;
+      $param_archers_id = $id;
       $param_validateur = $validateur;
       $param_valide = $valide;
       
@@ -90,7 +84,7 @@ if (isset($_POST['submit'])) {
       $result = mysqli_query($link, $sql);
       if($result){
           mysqli_close($link);
-          header("location: ./archers_admin.php");
+          header("location: ./passage_admin.php");
           exit();
       } else{
           echo "Oops! erreur inattendu, rééssayez ultérieusement";
@@ -133,7 +127,7 @@ if (isset($_POST['submit'])) {
                     <form method="post" enctype="multipart/form-data">
                         <div class="d-flex justify-content-center">
                             <div class="form-group ">
-                                <label>Couleur plume</label><br>
+                                <label style="background-color:red;color:yellow;padding:4px;border-radius:7px;">Choisir la plume</label><br>
                                 <select name="couleur" id="couleur">
                                     <option value="blanche">Blanche</option>
                                     <option value="noire">Noire</option>
@@ -144,11 +138,11 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label>Nombre points</label>
-                                <input type="number" name="point" class="form-control">
+                                <input type="number" name="point" class="form-control" value="<?php echo $_GET['total']?>">
                             </div>
                             <div class="form-group">
                                 <label>Date passage </label>
-                                <input type="date" name="date" class="form-control">
+                                <input type="date" name="date" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label>Le validateur</label>
@@ -156,7 +150,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label>Valide</label>
-                                <input type="number" name="valide" class="form-control">
+                                <input type="number" name="valide" class="form-control" value=1>
                             </div><br>
                         </div><br>
                         <input type="submit" name="submit" class="btn btn-primary" value="Enregistrer">

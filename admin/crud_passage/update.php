@@ -1,6 +1,6 @@
 <?php
 session_start();
-setcookie("total", 0, time()+2592000,"/");
+
 require_once "../../php/bdd/config.php";
 
 $tir1 = $tir2 = $tir3 = $tir4 = $tir5 = $tir6 =$date = "";
@@ -9,7 +9,8 @@ $tir1_err = $tir2_err = $tir3_err = $date_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $id = $_POST["id"];
+    $id = $_POST['id'];
+    $nbtir= $_POST['nbtir'];
 
     if (isset($_POST['total1'])) {
         $tir1 = trim($_POST['total1']);
@@ -42,11 +43,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $tir6 = 0;
     }
    
+    $choix=$_SESSION['choix'];
     
-        $sql = "UPDATE passage SET col1=?, col2=?, col3=?,col4=?, col5=?, col6=?, Created_at=? WHERE id=?";
+    $sql1 = "SELECT id FROM passage WHERE (id_archer='$id' AND nbtir='$nbtir' AND couleur='$choix')";
+    if($result1 = mysqli_query($link, $sql1)){
+        if(mysqli_num_rows($result1) > 0){
+            while($row1 = mysqli_fetch_array($result1)){
+                $id_place = $row1['id'];
+            }
+            
+        }
+    }
+
+        $sql = "UPDATE passage SET col1=?, col2=?, col3=?,col4=?, col5=?, col6=? WHERE id=?";
 
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "iiiiiiii", $param_col1, $param_col2, $param_col3, $param_col4, $param_col5, $param_col6,$param_date, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssiiii", $param_col1, $param_col2, $param_col3, $param_col4, $param_col5, $param_col6, $param_id);
             
             $param_col1 = $tir1;
             $param_col2 = $tir2;
@@ -54,15 +66,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_col4 = $tir4;
             $param_col5 = $tir5;
             $param_col6 = $tir6;
-            $param_date = date("Y-m-d");
-            $param_id = $id;
-
-            if(mysqli_stmt_execute($stmt)){
-                // header("location: ../passage_admin.php");
+            $param_id = $id_place;
+//var_dump($param_col1, $param_col2, $param_col3, $param_col4, $param_col5, $param_col6,$param_nbtir,$param_choix, $param_id,mysqli_stmt_execute($stmt));die;
+            if(mysqli_stmt_execute($stmt)){    
                 
-                $choix=$_SESSION['choix'];
-                $archer=$_SESSION['archer'];
-                header("Location: ../fiche_passage.php?choix=$choix&archer=$archer");
+                header("Location: ../passage_admin.php"); 
                 exit();
             } else{
                 echo "Oops! erreur inattendu, rééssayez ultérieusement";
@@ -70,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         
     
-    
+        setcookie("total", 0, time()-1,"/");
     mysqli_close($link);
 } else{
     
@@ -230,16 +238,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div id="validation" style="visibility:hidden">
                         <?php 
                             if($passage == $nbtir){
-                            if($type=="p"){
-                                echo '<a href="../plumes_admin.php?id='. $id .'&archer='. $archer .'&choix='. $choix.'" class="mr-3" title="validation" data-toggle="tooltip"><span class="fa fa-sheet-plastic p-2">Validation Finale</span></a>';
-                            }else{
                                 if(isset($_COOKIE['total'])){
                                     $total= $_COOKIE['total'];
                                 }else{
                                     $total= 0;
                                 }
+                                // var_dump($total);
+                            if($type=="p"){
+                                echo '<a href="../plumes_admin.php?id='. $id .'&archer='. $archer .'&choix='. $choix.'&total='. $_COOKIE['total'].'" class="mr-3" title="validation" data-toggle="tooltip" target="_blank"><span class="fa fa-sheet-plastic p-2">Validation Finale</span></a>';
+                            }else{
                                 var_dump($total);
-                                echo '<a href="../fleches_admin.php?id='. $id .'&archer='. $archer .'&choix='. $choix. '&total='. $total.'" class="mr-3" title="validation" data-toggle="tooltip"><span class="fa fa-sheet-plastic p-2">Validation Finale</span></a>';
+                                echo '<a href="../fleches_admin.php?id='. $id .'&archer='. $archer .'&choix='. $choix. '&total='. $total.'" class="mr-3" title="validation" data-toggle="tooltip" target="_blank"><span class="fa fa-sheet-plastic p-2">Validation Finale</span></a>';
                             }
                         } 
                         ?> 
@@ -263,6 +272,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <input type="hidden" id="ligne" value="0" />
                         <input type="hidden" id="place" value="0" />
                         <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                        <input type="hidden" name="nbtir" value="<?php echo $nbtir; ?>" />
 
                         <input type="submit" name="submit" id="submit" class="btn btn-primary " style="visibility:hidden" value="Enregistrer">
                         <a href="javascript:close_tab();" class="btn btn-secondary ml-2">Fermer</a>
@@ -347,11 +357,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 point_ant = parseInt(document.getElementById(total).value);
                 document.getElementById(total).value = point_ant+point;
-
+                
                 document.getElementsByClassName(total).value = point_ant+point;
               
                 document.getElementById("totalf").value = parseInt(valeur+point);
-                
+                console.log(document.getElementById("totalf").value);
                 if((reste-cases)==-6){
                     $val = Math.trunc(((document.getElementById("ligne").value)/10));
                     document.getElementById($val).style.visibility = "hidden";
@@ -361,6 +371,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     score = '<?php echo $score; ?>';
                     if(volee===3 && reste==30){
                         if(parseInt(document.getElementById("totalf").value) >= parseInt(score)){
+                            document.cookie = "total = " + parseInt(document.getElementById("totalf").value);
                             document.getElementById("resultat").value ="Plume validée";
                             document.getElementById("resultat").style.backgroundColor="#FFC300";
                             document.getElementById("resultat").style.color="white";
