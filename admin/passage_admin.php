@@ -41,9 +41,7 @@ if(isset($_POST["submit"])) {
         $plume == 'default' ? $choix=$_SESSION['fleche'] : $choix=$_SESSION['plume'];
         
         header("Location: ./fiche_passage.php?choix=$choix&archer=$archer");
-        //echo "<SCRIPT LANGUAGE='JavaScript'>window.open('./fiche_passage.php?choix='.$choix.'&archer='.$archer.','_blank');</SCRIPT>";
-        //echo "<script language='javascript'>blank.location.href='./fiche_passage.php?choix='.$choix.'&archer='.$archer.''</script>";
-    }
+        }
     
 }
 
@@ -95,7 +93,7 @@ session_abort();
                         require_once "../php/bdd/config.php";
 
                         // Attempt select query execution
-                        $sql = "SELECT * FROM archers";
+                        $sql = "SELECT * FROM archers ORDER BY nom, prenom DESC";
                         if($result = mysqli_query($link, $sql)) {
                             if(mysqli_num_rows($result) > 0) {
                                 echo '<table class="table table-bordered table-striped">';
@@ -103,7 +101,7 @@ session_abort();
                                 echo '<select name="archers" id="archers">';
                                 echo '<option>--- Choisir archer ---</option>';
                                 while($row = mysqli_fetch_array($result)) {
-                                    echo '<option value="'. $row['id']. ' ' .$row['nom']. ' ' . $row['prenom'] .'">'.$row['nom']. ' ' . $row['prenom'] .'</option>';
+                                    echo '<option value="'. $row['id']. ' ' .strtoupper($row['nom']). ' ' . ucfirst($row['prenom']) .'">'.$row['nom']. ' ' . $row['prenom'] .'</option>';
                                 }
                                 echo '</select> ';
                                 echo "</tbody>";

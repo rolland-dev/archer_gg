@@ -2,5 +2,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
     <div class="footer">
-        <div><p style={color:black;}>Mise à jour le 18/09/2024 - RLDéveloppement</p></div>
+        <div><p style={color:black;}>Mise à jour le 15/10/2024 - RLDéveloppement</p></div>
     </div>

@@ -124,6 +124,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         width: 90%;
         text-align: center;
     }
+
+    
+    .taille{
+        padding: 16px !important;
+        font-size: 2rem !important;
+    }
+    #cible{
+        position: relative;
+    }
+    svg{
+        position:absolue;
+        top:-5px;
+        left: -10px;
+    }
+    /* div{
+        position: relative;
+        top:0;
+        left: 0;
+        z-index: 0;
+    } */
+   
     </style>
 </head>
 
@@ -256,18 +277,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                        
                         
                         <div id="points" style="visibility:hidden">
-                            <div class="btn btn-primary" id="10" onclick="ajout(this.id,<?= $volee?>);">10</div>
-                            <div class="btn btn-primary" id="9" onclick="ajout(this.id,<?= $volee?>);">9</div>
-                            <div class="btn btn-primary" id="8" onclick="ajout(this.id,<?= $volee?>);">8</div>
-                            <div class="btn btn-primary" id="7" onclick="ajout(this.id,<?= $volee?>);">7</div>
-                            <div class="btn btn-primary" id="6" onclick="ajout(this.id,<?= $volee?>);">6</div>
-                            <div class="btn btn-primary" id="5" onclick="ajout(this.id,<?= $volee?>);">5</div>
-                            <div class="btn btn-primary" id="4" onclick="ajout(this.id,<?= $volee?>);">4</div>
-                            <div class="btn btn-primary" id="3" onclick="ajout(this.id,<?= $volee?>);">3</div>
-                            <div class="btn btn-primary" id="2" onclick="ajout(this.id,<?= $volee?>);">2</div>
-                            <div class="btn btn-primary" id="1" onclick="ajout(this.id,<?= $volee?>);">1</div>
-                            <div class="btn btn-primary" id="0" onclick="ajout(this.id,<?= $volee?>);">0</div>
+                            <div class="btn btn-primary taille" id="10" onclick="ajout(this.id,<?= $volee?>);">10</div>
+                            <div class="btn btn-primary taille" id="9" onclick="ajout(this.id,<?= $volee?>);">9</div>
+                            <div class="btn btn-primary taille" id="8" onclick="ajout(this.id,<?= $volee?>);">8</div>
+                            <div class="btn btn-primary taille" id="7" onclick="ajout(this.id,<?= $volee?>);">7</div>
+                            <div class="btn btn-primary taille" id="6" onclick="ajout(this.id,<?= $volee?>);">6</div>
+                            <div class="btn btn-primary taille" id="5" onclick="ajout(this.id,<?= $volee?>);">5</div>
+                            <div class="btn btn-primary taille" id="4" onclick="ajout(this.id,<?= $volee?>);">4</div>
+                            <div class="btn btn-primary taille" id="3" onclick="ajout(this.id,<?= $volee?>);">3</div>
+                            <div class="btn btn-primary taille" id="2" onclick="ajout(this.id,<?= $volee?>);">2</div>
+                            <div class="btn btn-primary taille" id="1" onclick="ajout(this.id,<?= $volee?>);">1</div>
+                            <div class="btn btn-primary taille" id="0" onclick="ajout(this.id,<?= $volee?>);">0</div>
                         </div><br>
+                        <div id="cible" style="visibility:hidden">
+                            <svg
+                                id="svg"
+                                width="480"
+                                height="480"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                
+                                <rect id="0" onclick="choix(this.id);" x="10" y="10" width="480" height="480" stroke="transparent" fill="transparent"/>
+                                <circle id="1" onclick="choix(this.id);" cx="250" cy="250" r="210" stroke="black" fill="white" />
+                                <circle id="2" onclick="choix(this.id);" cx="250" cy="250" r="185" stroke="black" fill="white" />
+                                <circle id="3" onclick="choix(this.id);" cx="250" cy="250" r="165" stroke="white" fill="black" />
+                                <circle id="4" onclick="choix(this.id);" cx="250" cy="250" r="140" stroke="white" fill="black" />
+                                <circle id="5" onclick="choix(this.id);" cx="250" cy="250" r="120" stroke="black" fill="blue" />
+                                <circle id="6" onclick="choix(this.id);" cx="250" cy="250" r="95" stroke="black" fill="blue" />
+                                <circle id="7" onclick="choix(this.id);" cx="250" cy="250" r="75" stroke="black" fill="red" />
+                                <circle id="8" onclick="choix(this.id);" cx="250" cy="250" r="50" stroke="black" fill="red" />
+                                <circle id="9" onclick="choix(this.id);" cx="250" cy="250" r="30" stroke="black" fill="yellow" />
+                                <circle id="10" onclick="choix(this.id);" cx="250" cy="250" r="15" stroke="black" fill="yellow" />
+                                <circle id="120" cx="0" cy="0"  r="3" stroke="black" fill="white"></circle>
+                                <circle id="130" cx="0" cy="0"  r="3" stroke="black" fill="white"></circle>
+                                <circle id="140" cx="0" cy="0"  r="3" stroke="black" fill="white"></circle>
+                                <circle id="150" cx="0" cy="0"  r="3" stroke="black" fill="white"></circle>
+                                <circle id="160" cx="0" cy="0"  r="3" stroke="black" fill="white"></circle>
+                                <circle id="170" cx="0" cy="0"  r="3" stroke="black" fill="white"></circle>
+                            </svg>
+                        </div>
                         <!--<input type="" id="totalG"  />-->
                         <input type="hidden" id="ligne" value="0" />
                         <input type="hidden" id="place" value="0" />
@@ -282,6 +331,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     </div>
     <script type="text/javascript">
+        let compteur =110;
+        let idRecup;
+        let elementDiv=document.getElementById('svg');
+        let coord = elementDiv.getBoundingClientRect();
+        console.log(coord.x , coord.y);
+
+        function choix(id){
+            idRecup = id;
+            window.addEventListener('click', mousemove);
+        }
+        function mousemove(event) {  
+            if(compteur>=170){
+                compteur =110;
+            }
+            compteur=compteur+10;
+            document.getElementById(compteur).setAttribute("cx", (event.clientX-coord.x)+"px");
+            document.getElementById(compteur).setAttribute("cy", (event.clientY-coord.y)+"px");
+            console.log(document.getElementById(compteur));
+            ajout(idRecup,<?= $volee?>);
+             
+        }
+
         function close_tab(){
             if (confirm('Attention toutes les données seront perdues !!! \nVoulez vous fermer cette onglet ?')) {
                 window.close();
@@ -321,7 +392,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         function ajout(id,volee){
             point = parseInt(id);
             volees = parseInt(volee);
-            console.log(volee);
             result = document.getElementById("place").value;
             place = parseInt(result.substring(5,7));
             total = `total`+result.substring(5,6);
@@ -361,13 +431,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 document.getElementsByClassName(total).value = point_ant+point;
               
                 document.getElementById("totalf").value = parseInt(valeur+point);
-                console.log(document.getElementById("totalf").value);
+                
                 if((reste-cases)==-6){
                     $val = Math.trunc(((document.getElementById("ligne").value)/10));
                     document.getElementById($val).style.visibility = "hidden";
                     document.getElementById(place).style.visibility = "hidden";
                     document.getElementById("points").style.visibility = "hidden";
+                    document.getElementById("cible").style.visibility = "hidden";
                     document.getElementById("ligne").value = 0;
+                    for (let index = 120; index <= 170; index+=10) {
+                        document.getElementById(index).setAttribute("cx", 0);
+                        document.getElementById(index).setAttribute("cy", 0);      
+                    }
+                    compteur=110;
                     score = '<?php echo $score; ?>';
                     if(volee===3 && reste==30){
                         if(parseInt(document.getElementById("totalf").value) >= parseInt(score)){
@@ -396,6 +472,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         function ecrit(id){
             ligne = `ligne` + id;
             document.getElementById("points").style.visibility = "visible";
+            document.getElementById("cible").style.visibility = "visible";
             document.getElementById("place").value = ligne;
             document.getElementById(id).textContent = "en cours";
         }

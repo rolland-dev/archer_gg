@@ -187,6 +187,9 @@ input.form-control{
         width: auto;
      
     }
+    .btn-primary{
+        padding: 16px !important;
+    }
     /* .footer {
         display: flex;
         flex-direction: column;

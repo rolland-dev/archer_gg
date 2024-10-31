@@ -1,5 +1,9 @@
 <?php
 require_once "../../php/bdd/config.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../vendor/autoload.php'; // Chemin vers le fichier autoload de Composer
 
 $lien = $editeur = $commentaire = $valide ="";
 $lien_err = $editeur_err = $commentaire_err = $valide_err = "";
@@ -53,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $result = mysqli_query($link, $sql);
             if($result){
 
-                $sql1 = "SELECT email FROM archers WHERE valide=1"; //WHERE valide=1
+                $sql1 = "SELECT email FROM archers WHERE valide=1";
                 $email1=array();
                 if($result1 = mysqli_query($link,$sql1)){
                     if(mysqli_num_rows($result1)>0){
@@ -67,34 +71,75 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 
                 if($valide===1){
                     foreach($email1 as $email){
+                        $mail = new PHPMailer(true);
+
+                        try {
+                            //Server settings
+                           include './config_mail.php';
+                            
+                            $mail->addAddress($email); // Ajouter un destinataire
+
+                            // Personnaliser le message
+                            $mail->Subject = 'Message Archers de Guignicourt';
+                            $mail->Body    = "Bonjour, un nouveau message a été déposé le site des archers de Guignicourt, accédez https://www.archersdeguignicourt.fr .  Cordialement l'équipe des Archers de Guignicourt.";
+                            $mail->AltBody = "Bonjour, un nouveau message a été déposé le site des archers de Guignicourt, accédez https://www.archersdeguignicourt.fr .  Cordialement l'équipe des Archers de Guignicourt.";
+
+                            $mail->send();
+                            $mail->clearAddresses(); // Effacer les adresses pour la prochaine itération
+
+                            echo 'Les messages ont été envoyés';
+                        } catch (Exception $e) {
+                            echo "Le message n'a pas pu être envoyé. Erreur du Mailer : {$mail->ErrorInfo}";
+                        }
                         // envoi de mail
-                        ini_set( 'display_errors', 1 );
-                        error_reporting( E_ALL );
-                        $from = "contact@archersdeguignicourt.fr";
-                        $to = $email;
-                        $subject = "Message Archers de Guignicourt". $email;
-                        $message = "Bonjour, un nouveau message a été déposé le site des archers de Guignicourt, accédez https://www.archersdeguignicourt.fr .  Cordialement l'équipe des Archers de Guignicourt.";
-                        $headers[] = 'MIME-Version: 1.0';
-                        $headers[] = 'Content-type: text/html; charset=utf-8';
-                        $headers[] = "De :" . $from;
-                        mail($to,$subject,$message, implode("\r\n",$headers));
-                        echo "L'email a été envoyé.";
+                        // ini_set( 'display_errors', 1 );
+                        // error_reporting( E_ALL );
+                        // $from = "contact@archersdeguignicourt.fr";
+                        // $to = $email;
+                        // $subject = "Message Archers de Guignicourt". $email;
+                        // $message = "Bonjour, un nouveau message a été déposé le site des archers de Guignicourt, accédez https://www.archersdeguignicourt.fr .  Cordialement l'équipe des Archers de Guignicourt.";
+                        // $headers[] = 'MIME-Version: 1.0';
+                        // $headers[] = 'Content-type: text/html; charset=utf-8';
+                        // $headers[] = "De :" . $from;
+                        // mail($to,$subject,$message, implode("\r\n",$headers));
+                        // echo "L'email a été envoyé.";
                         // fin envoi mail
                     }
                 }else{
                     foreach($email1 as $email){
+                        $mail = new PHPMailer(true);
+
+                        try {
+                            //Server settings
+                           include './config_mail.php';
+                            
+                            $mail->addAddress($email); // Ajouter un destinataire
+
+                            // Personnaliser le message
+                            $mail->Subject = 'Message Archers de Guignicourt';
+                            $mail->Body    = $commentaire;
+                            $mail->AltBody = $commentaire;
+
+                            $mail->send();
+                            $mail->clearAddresses(); // Effacer les adresses pour la prochaine itération
+
+                            echo 'Les messages ont été envoyés';
+                        } catch (Exception $e) {
+                            echo "Le message n'a pas pu être envoyé. Erreur du Mailer : {$mail->ErrorInfo}";
+                        }
+
                         // envoi de mail
-                        ini_set( 'display_errors', 1 );
-                        error_reporting( E_ALL );
-                        $from = "contact@archersdeguignicourt.fr";
-                        $to = $email;
-                        $subject = "Message Archers de Guignicourt". $email;
-                        $message = $commentaire;
-                        $headers[] = 'MIME-Version: 1.0';
-                        $headers[] = 'Content-type: text/html; charset=utf-8';
-                        $headers[] = "De :" . $from;
-                        mail($to,$subject,$message, implode("\r\n",$headers));
-                        echo "L'email a été envoyé.";
+                        // ini_set( 'display_errors', 1 );
+                        // error_reporting( E_ALL );
+                        // $from = "contact@archersdeguignicourt.fr";
+                        // $to = $email;
+                        // $subject = "Message Archers de Guignicourt". $email;
+                        // $message = $commentaire;
+                        // $headers[] = 'MIME-Version: 1.0';
+                        // $headers[] = 'Content-type: text/html; charset=utf-8';
+                        // $headers[] = "De :" . $from;
+                        // mail($to,$subject,$message, implode("\r\n",$headers));
+                        // echo "L'email a été envoyé.";
                         // fin envoi mail
                     }
                 }

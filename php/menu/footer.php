@@ -6,5 +6,5 @@
         <div class="fcentre">
             <a href="./fichiers/CGU.pdf" target="_blank">CGU</a> 
         <br></div>
-        <div class="maj"><p>Mise à jour le 18/09/2024 - RLDéveloppement</p></div>
+        <div class="maj"><p>Mise à jour le 15/10/2024 - RLDéveloppement</p></div>
     </div>

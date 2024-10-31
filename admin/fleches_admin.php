@@ -144,7 +144,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label>Nombre points</label>
-                                <input type="number" name="point" class="form-control">
+                                <input type="number" name="point" class="form-control" value="<?php echo $total ?>">
                             </div>
                             <div class="form-group">
                                 <label>Date passage </label>
@@ -198,8 +198,8 @@ if (isset($_POST['submit'])) {
                                         echo "<td>" . date('d-m-Y', strtotime($row['date'])). "</td>";
                                         echo "<td>" . $row['point'] . "</td>";
                                         echo "<td class='class='d-flex justify-content-around w-100''>";
-                                                echo '<a href="./fleches_archers/update.php?id='. $row['id'] .'" class="p-2" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt"></span></a>';
-                                                echo '<a href="./fleches_archers/delete.php?id='. $row['id'] .'" class="p-2" title="supprimer archer" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                                echo '<a href="./crud_fleches/update.php?id='. $row['id'] .'" class="p-2" title="mise a jour archer" data-toggle="tooltip"><span class="fas fa-pencil-alt"></span></a>';
+                                                echo '<a href="./crud_fleches/delete.php?id='. $row['id'] .'" class="p-2" title="supprimer archer" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                             echo "</td>";
                                     echo "</tr>";
                                     

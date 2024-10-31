@@ -163,6 +163,31 @@ $sql = "create table if not exists contact(
 if(!mysqli_query($link,$sql)){
     echo "Erreur de création";
 }
+
+// creation table entrainement archers procédurale
+$sql = "create table if not exists entrainements(
+    id int(6) unsigned auto_increment primary key,
+    archers_id int(10) not null,
+    date date not null,
+    nb_fleche int(10) not null,
+    volee int(6) not null,
+    fleche1 int(10) not null,
+    fleche2 int(10) not null,
+    fleche3 int(10) not null,
+    fleche4 int(10) not null,
+    fleche5 int(10) not null,
+    fleche6 int(10) not null,
+    total int(10) null,
+    distance int(10) not null,
+    blason int(10) not null,
+    type text not null,
+    valide int(1) not null,
+    num_entrainement int not null)";
+
+
+if(!mysqli_query($link,$sql)){
+    echo "Erreur de création";
+}
 $link -> close();
 
 ?>

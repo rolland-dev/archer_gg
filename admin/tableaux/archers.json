@@ -1,17 +1,20 @@
 {
     "palette":{
+        "nombre" : "nombre",
         "latérale" : "laterale",
         "numéro" : "numero",
         "taille" : "taille",
         "divers" : "divers"
     },
     "gant":{
+        "nombre" : "nombre",
         "latérale" : "laterale",
         "numéro" : "numero",
         "taille" : "taille",
         "divers" : "divers"
     },
     "protection":{
+        "nombre" : "nombre",
         "latérale" : "laterale",
         "numéro" : "numero",
         "taille" : "taille",

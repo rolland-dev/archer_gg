@@ -85,6 +85,9 @@ require_once "./php/bdd/config.php";
                     <li class="nav-item">
                         <a class="nav-link" href="./archer.php">Mon compte</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./entrainement.php">Mes entrainement</a>
+                    </li>
                 <?php endif; ?>
                 <?php if ($ROLE == "SUPERADMIN") : ?>
                     <li class="nav-item">
@@ -93,10 +96,16 @@ require_once "./php/bdd/config.php";
                     <li class="nav-item">
                         <a class="nav-link" href="./archer.php">Mon compte</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./entrainement.php">Mes entrainement</a>
+                    </li>
                 <?php endif; ?>
                 <?php if ($ROLE == "USER") : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="./archer.php">Mon compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./entrainement.php">Mes entrainement</a>
                     </li>
                 <?php endif; ?>
                 <?php if ($connect == "yes") : ?>

@@ -38,6 +38,11 @@ if(isset($_GET['choix'])){
 }else{
     $choix="";
 }
+if(isset($_GET['total'])){
+    $total = $_GET['total'];
+}else{
+    $total="";
+}
 
 $couleur = $point = $valide= $date= "";
 $couleur_err = $point_err = $date_err ="";
@@ -138,7 +143,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label>Nombre points</label>
-                                <input type="number" name="point" class="form-control" value="<?php echo $_GET['total']?>">
+                                <input type="number" name="point" class="form-control" value="<?php echo $total ?>">
                             </div>
                             <div class="form-group">
                                 <label>Date passage </label>
